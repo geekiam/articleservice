@@ -127,7 +127,7 @@ Task("Docker-Push")
    {
       Information("Pushing : Docker Image");
       var settings = new DockerImagePushSettings{ AllTags = false};
-      DockerPush(settings, $"{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}");
+      DockerPush(settings, $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}");
     }
 });
 
