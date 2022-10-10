@@ -118,7 +118,7 @@ Task("Docker-Push")
    if (BuildSystem.GitHubActions.IsRunningOnGitHubActions)
    {
       Information("Pushing : Docker Image");
-      DockerPush( $"{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}");
+      DockerPush( $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}");
     }
 });
 

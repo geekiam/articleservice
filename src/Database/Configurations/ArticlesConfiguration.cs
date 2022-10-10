@@ -26,7 +26,6 @@ public class ArticlesConfiguration : Threenine.Configurations.SqlServer.BaseEnti
          .HasMaxLength(255)
          .IsRequired();
       
-      
       builder.Property(x => x.Published)
          .HasColumnType(ColumnTypes.Timestamp)
          .IsRequired();
