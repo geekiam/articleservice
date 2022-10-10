@@ -101,17 +101,10 @@ Task("Publish")
 
 
 });
-Task("Docker-Login")
- .IsDependentOn("Publish")
-.Does(() => {
-    
-    var loginSettings = new DockerRegistryLoginSettings();
-   
-    DockerLogin(loginSettings, "ghcr.io");
-});
+
 
 Task("Docker-Build")
- .IsDependentOn("Docker-Login")
+ .IsDependentOn("Publish")
 .Does(() => {
     
     string [] tags = new string[]  {  $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"};
@@ -126,7 +119,8 @@ Task("Docker-Push")
    if (BuildSystem.GitHubActions.IsRunningOnGitHubActions)
    {
       Information("Pushing : Docker Image");
-      DockerPush( $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}");
+      var settings = new DockerImagePushSettings{ AllTags = true};
+      DockerPush(settings, $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}");
     }
 });
 
@@ -141,7 +135,6 @@ Task("Default")
        .IsDependentOn("Build")
        .IsDependentOn("Test")
        .IsDependentOn("Publish")
-       .IsDependentOn("Docker-Login")
        .IsDependentOn("Docker-Build")
        .IsDependentOn("Docker-Push");
 
