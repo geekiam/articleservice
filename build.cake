@@ -106,7 +106,7 @@ Task("Publish")
 Task("Docker-Login")
  .IsDependentOn("Publish")
 .Does(() => {
-    packageName = $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }"
+    packageName = $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }";
     var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("GITHUB_TOKEN") , Username= "USERNAME" };
     DockerLogin(loginSettings, "ghcr.io");
 });
