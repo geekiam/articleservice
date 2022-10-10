@@ -105,9 +105,9 @@ Task("Docker-Login")
  .IsDependentOn("Publish")
 .Does(() => {
     
-    var loginSettings = new DockerRegistryLoginSettings {Username = "USERNAME", PasswordStdin = true};
+    var loginSettings = new DockerRegistryLoginSettings();
    
-    DockerLogin( loginSettings, "ghcr.io");
+    DockerLogin(loginSettings, "ghcr.io");
 });
 
 Task("Docker-Build")
