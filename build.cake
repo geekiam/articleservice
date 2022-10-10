@@ -106,8 +106,7 @@ Task("Publish")
 Task("Docker-Login")
  .IsDependentOn("Publish")
 .Does(() => {
-    // Set the Package Name to be used by all Docker functions
-    packageName = $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}";
+    packageName = $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }"
     var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("GITHUB_TOKEN") , Username= "USERNAME" };
     DockerLogin(loginSettings, "ghcr.io");
 });
@@ -116,7 +115,7 @@ Task("Docker-Build")
  .IsDependentOn("Docker-Login")
 .Does(() => {
     
-    string [] tags = new string[]  {  packageName};
+    string [] tags = new string[]  {  $"{ packageName}:{version}"};
       Information("Building : Docker Image");
     var settings = new DockerImageBuildSettings { Tag=tags};
     DockerBuild(settings, "./");
@@ -129,7 +128,7 @@ Task("Docker-Push")
    {
       Information("Pushing : Docker Image");
       var settings = new DockerImagePushSettings{ AllTags = true};
-      DockerPush(settings, packageName);
+      DockerPush(settings, $"{ packageName }");
     }
 });
 
