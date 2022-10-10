@@ -102,9 +102,17 @@ Task("Publish")
 
 });
 
+Task("Docker-Login")
+ .IsDependentOn("Publish")
+.Does(() => {
+    
+    var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("GITHUB_TOKEN") , Username= "USERNAME" };
+   
+    DockerLogin(loginSettings, "ghcr.io");
+});
 
 Task("Docker-Build")
- .IsDependentOn("Publish")
+ .IsDependentOn("Docker-Login")
 .Does(() => {
     
     string [] tags = new string[]  {  $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"};
@@ -135,6 +143,7 @@ Task("Default")
        .IsDependentOn("Build")
        .IsDependentOn("Test")
        .IsDependentOn("Publish")
+        .IsDependentOn("Docker-Login")
        .IsDependentOn("Docker-Build")
        .IsDependentOn("Docker-Push");
 
