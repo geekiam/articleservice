@@ -107,7 +107,6 @@ Task("Docker-Login")
 .Does(() => {
     
     var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("GITHUB_TOKEN") , Username= "USERNAME" };
-   
     DockerLogin(loginSettings, "ghcr.io");
 });
 
@@ -115,7 +114,7 @@ Task("Docker-Build")
  .IsDependentOn("Docker-Login")
 .Does(() => {
     
-    string [] tags = new string[]  {  $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"};
+    string [] tags = new string[]  {  $"{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"};
       Information("Building : Docker Image");
     var settings = new DockerImageBuildSettings { Tag=tags};
     DockerBuild(settings, "./");
@@ -128,7 +127,7 @@ Task("Docker-Push")
    {
       Information("Pushing : Docker Image");
       var settings = new DockerImagePushSettings{ AllTags = true};
-      DockerPush(settings, $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }");
+      DockerPush(settings, $"{ rootNamespace.ToLower() }/{ projectTag.ToLower() }");
     }
 });
 
