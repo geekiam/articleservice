@@ -6,6 +6,7 @@ string version = String.Empty;
 
 string projectTag = "Articles";
 string rootNamespace = "Geekiam";
+string packageName = string.Empty;
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -105,7 +106,8 @@ Task("Publish")
 Task("Docker-Login")
  .IsDependentOn("Publish")
 .Does(() => {
-    
+    // Set the Package Name to be used by all Docker functions
+    packageName = $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"
     var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("GITHUB_TOKEN") , Username= "USERNAME" };
     DockerLogin(loginSettings, "ghcr.io");
 });
@@ -114,7 +116,7 @@ Task("Docker-Build")
  .IsDependentOn("Docker-Login")
 .Does(() => {
     
-    string [] tags = new string[]  {  $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"};
+    string [] tags = new string[]  {  packageName};
       Information("Building : Docker Image");
     var settings = new DockerImageBuildSettings { Tag=tags};
     DockerBuild(settings, "./");
@@ -127,7 +129,7 @@ Task("Docker-Push")
    {
       Information("Pushing : Docker Image");
       var settings = new DockerImagePushSettings{ AllTags = true};
-      DockerPush(settings, $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }");
+      DockerPush(settings, packageName);
     }
 });
 
