@@ -5,11 +5,11 @@ using Threenine.Configurations.PostgreSql;
 
 namespace Database.Articless.Configurations;
 
-public class ArticlesConfiguration : Threenine.Configurations.SqlServer.BaseEntityTypeConfiguration<Articles>
+public class ArticlesConfiguration : BaseEntityTypeConfiguration<Articles>
 {
    public override void Configure(EntityTypeBuilder<Articles> builder)
    {
-      builder.ToTable(nameof(Websites).ToLower());
+      builder.ToTable(nameof(Articles).ToLower());
 
       builder.Property(x => x.Title)
          .HasColumnType(ColumnTypes.Varchar)
@@ -30,10 +30,7 @@ public class ArticlesConfiguration : Threenine.Configurations.SqlServer.BaseEnti
          .HasColumnType(ColumnTypes.Timestamp)
          .IsRequired();
       
-      builder.Property(x => x.WebsiteId)
-         .HasColumnType(ColumnTypes.UniqueIdentifier)
-       .IsRequired();
-
+    
       builder.HasOne(x => x.Website)
          .WithMany(x => x.Articles)
          .HasForeignKey(x => x.WebsiteId);

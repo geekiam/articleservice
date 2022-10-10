@@ -143,7 +143,7 @@ Task("Default")
        .IsDependentOn("Build")
        .IsDependentOn("Test")
        .IsDependentOn("Publish")
-        .IsDependentOn("Docker-Login")
+       .IsDependentOn("Docker-Login")
        .IsDependentOn("Docker-Build")
        .IsDependentOn("Docker-Push");
 
