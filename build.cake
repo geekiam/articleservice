@@ -114,7 +114,7 @@ Task("Docker-Build")
  .IsDependentOn("Docker-Login")
 .Does(() => {
     
-    string [] tags = new string[]  {  $"{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"};
+    string [] tags = new string[]  {  $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"};
       Information("Building : Docker Image");
     var settings = new DockerImageBuildSettings { Tag=tags};
     DockerBuild(settings, "./");
@@ -127,7 +127,7 @@ Task("Docker-Push")
    {
       Information("Pushing : Docker Image");
       var settings = new DockerImagePushSettings{ AllTags = true};
-      DockerPush(settings, $"{ rootNamespace.ToLower() }/{ projectTag.ToLower() }");
+      DockerPush(settings, $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }");
     }
 });
 
