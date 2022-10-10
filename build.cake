@@ -107,7 +107,7 @@ Task("Docker-Login")
  .IsDependentOn("Publish")
 .Does(() => {
     // Set the Package Name to be used by all Docker functions
-    packageName = $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}"
+    packageName = $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }:{version}";
     var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("GITHUB_TOKEN") , Username= "USERNAME" };
     DockerLogin(loginSettings, "ghcr.io");
 });
