@@ -23,6 +23,8 @@ jobs:
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
+          REGISTRY_TOKEN: ${{ github.token }}
+          CONTAINER_REGISTRY: "ghcr.io"
         run: |
           dotnet new tool-manifest
           dotnet tool install Cake.Tool

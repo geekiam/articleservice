@@ -7,6 +7,8 @@ string version = String.Empty;
 string projectTag = "Articles";
 string rootNamespace = "Geekiam";
 string packageName = string.Empty;
+string containerRegistry = EnvironmentVariable("CONTAINER_REGISTRY");
+
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -106,15 +108,18 @@ Task("Publish")
 Task("Docker-Login")
  .IsDependentOn("Publish")
 .Does(() => {
-    packageName = $"ghcr.io/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }";
-    var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("GITHUB_TOKEN") , Username= "USERNAME" };
-    DockerLogin(loginSettings, "ghcr.io");
+  
+   if (BuildSystem.GitHubActions.IsRunningOnGitHubActions || BuildSystem.IsRunningOnBitbucketPipelines)
+     {
+        var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("REGISTRY_TOKEN") , Username= "USERNAME" };
+        DockerLogin(loginSettings, $"{containerRegistry}");
+    }
 });
 
 Task("Docker-Build")
  .IsDependentOn("Docker-Login")
 .Does(() => {
-    
+     packageName = $"{containerRegistry}/{ rootNamespace.ToLower() }/{ projectTag.ToLower() }";
     string [] tags = new string[]  {  $"{ packageName}:{version}"};
       Information("Building : Docker Image");
     var settings = new DockerImageBuildSettings { Tag=tags};
@@ -124,7 +129,7 @@ Task("Docker-Build")
 Task("Docker-Push")
  .IsDependentOn("Docker-Build")
 .Does(() => {
-   if (BuildSystem.GitHubActions.IsRunningOnGitHubActions)
+   if (BuildSystem.GitHubActions.IsRunningOnGitHubActions || BuildSystem.IsRunningOnBitbucketPipelines)
    {
       Information("Pushing : Docker Image");
       var settings = new DockerImagePushSettings{ AllTags = true};
