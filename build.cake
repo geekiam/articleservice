@@ -8,13 +8,34 @@ string projectTag = "Articles";
 string rootNamespace = "Geekiam";
 string packageName = string.Empty;
 string containerRegistry = EnvironmentVariable("CONTAINER_REGISTRY");
+string registryToken = EnvironmentVariable("REGISTRY_TOKEN");
 
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
 
+Task("Validate")
+  .Description("Check Environment Variables")
+  .Does(() => {
+   
+   var requiredVariables = new string[] {
+    "CONTAINER_REGISTRY",
+    "REGISTRY_TOKEN"
+   };
+   
+   foreach(var variable in requiredVariables)
+   {
+     if(!HasEnvironmentVariable(variable) )
+     {
+       throw new Exception($"{variable} has not been provided");
+     }
+   }
+   
+});
+
 Task("Clean")
+     .IsDependentOn("Validate")
     .Does(() => {
     DotNetClean("./Articles.sln");
 });
@@ -111,7 +132,7 @@ Task("Docker-Login")
   
    if (BuildSystem.GitHubActions.IsRunningOnGitHubActions || BuildSystem.IsRunningOnBitbucketPipelines)
      {
-        var loginSettings = new DockerRegistryLoginSettings{ Password = EnvironmentVariable("REGISTRY_TOKEN") , Username= "USERNAME" };
+        var loginSettings = new DockerRegistryLoginSettings{ Password = registryToken , Username= "USERNAME" };
         DockerLogin(loginSettings, $"{containerRegistry}");
     }
 });
@@ -142,6 +163,7 @@ Task("Docker-Push")
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
+       .IsDependentOn("Validate")
        .IsDependentOn("Clean")
        .IsDependentOn("Restore")
        .IsDependentOn("Version")
