@@ -2,6 +2,6 @@ namespace Api.Activities;
 
 internal static class Routes
 {
-    // Add Your Resource Names here
-   
+   public const string Websites = "websites";
+
 }

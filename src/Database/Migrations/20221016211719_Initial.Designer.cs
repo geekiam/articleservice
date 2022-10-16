@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Geekiam.Migrations
 {
     [DbContext(typeof(ArticlesContext))]
-    [Migration("20221010220222_Initial")]
+    [Migration("20221016211719_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace Geekiam.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "uuid-ossp");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Geekiam.Data.Articles", b =>
+            modelBuilder.Entity("Geekiam.Data.Posts", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,6 +58,9 @@ namespace Geekiam.Migrations
                     b.Property<DateTime>("Published")
                         .HasColumnType("TimestampTz");
 
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasMaxLength(300)
@@ -68,17 +71,14 @@ namespace Geekiam.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar");
 
-                    b.Property<Guid>("WebsiteId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("WebsiteId");
+                    b.HasIndex("SourceId");
 
-                    b.ToTable("articles", "Articles");
+                    b.ToTable("posts", "Articles");
                 });
 
-            modelBuilder.Entity("Geekiam.Data.Websites", b =>
+            modelBuilder.Entity("Geekiam.Data.Sources", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,23 +124,23 @@ namespace Geekiam.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("websites", "Articles");
+                    b.ToTable("sources", "Articles");
                 });
 
-            modelBuilder.Entity("Geekiam.Data.Articles", b =>
+            modelBuilder.Entity("Geekiam.Data.Posts", b =>
                 {
-                    b.HasOne("Geekiam.Data.Websites", "Website")
-                        .WithMany("Articles")
-                        .HasForeignKey("WebsiteId")
+                    b.HasOne("Geekiam.Data.Sources", "Source")
+                        .WithMany("Posts")
+                        .HasForeignKey("SourceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Website");
+                    b.Navigation("Source");
                 });
 
-            modelBuilder.Entity("Geekiam.Data.Websites", b =>
+            modelBuilder.Entity("Geekiam.Data.Sources", b =>
                 {
-                    b.Navigation("Articles");
+                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }

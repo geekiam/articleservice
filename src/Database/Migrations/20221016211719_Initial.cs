@@ -16,7 +16,7 @@ namespace Geekiam.Migrations
                 .Annotation("Npgsql:PostgresExtension:uuid-ossp", ",,");
 
             migrationBuilder.CreateTable(
-                name: "websites",
+                name: "sources",
                 schema: "Articles",
                 columns: table => new
                 {
@@ -31,11 +31,11 @@ namespace Geekiam.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_websites", x => x.id);
+                    table.PrimaryKey("PK_sources", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "articles",
+                name: "posts",
                 schema: "Articles",
                 columns: table => new
                 {
@@ -44,38 +44,38 @@ namespace Geekiam.Migrations
                     Summary = table.Column<string>(type: "varchar", maxLength: 300, nullable: false),
                     Permalink = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
                     Published = table.Column<DateTime>(type: "TimestampTz", nullable: false),
-                    WebsiteId = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
                     created = table.Column<DateTime>(type: "TimestampTz", nullable: false),
                     modified = table.Column<DateTime>(type: "TimestampTz", nullable: false),
                     active = table.Column<bool>(type: "boolean", nullable: true, defaultValue: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_articles", x => x.id);
+                    table.PrimaryKey("PK_posts", x => x.id);
                     table.ForeignKey(
-                        name: "FK_articles_websites_WebsiteId",
-                        column: x => x.WebsiteId,
+                        name: "FK_posts_sources_SourceId",
+                        column: x => x.SourceId,
                         principalSchema: "Articles",
-                        principalTable: "websites",
+                        principalTable: "sources",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_articles_WebsiteId",
+                name: "IX_posts_SourceId",
                 schema: "Articles",
-                table: "articles",
-                column: "WebsiteId");
+                table: "posts",
+                column: "SourceId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "articles",
+                name: "posts",
                 schema: "Articles");
 
             migrationBuilder.DropTable(
-                name: "websites",
+                name: "sources",
                 schema: "Articles");
         }
     }

@@ -5,11 +5,11 @@ using Threenine.Configurations.PostgreSql;
 
 namespace Database.Articless.Configurations;
 
-public class WebsiteConfiguration : BaseEntityTypeConfiguration<Websites>
+public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
 {
-    public override void Configure(EntityTypeBuilder<Websites> builder)
+    public override void Configure(EntityTypeBuilder<Sources> builder)
     {
-        builder.ToTable(nameof(Websites).ToLower());
+        builder.ToTable(nameof(Sources).ToLower());
 
         builder.Property(x => x.Identifier)
             .HasColumnType(ColumnTypes.Varchar)

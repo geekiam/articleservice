@@ -13,9 +13,9 @@ public class ArticlesContext : BaseContext<ArticlesContext>
     {
     }
 
-    public DbSet<Websites> Websites { get; set; }
+    public DbSet<Sources> Sources { get; set; }
 
-    public DbSet<Articles> Articles { get; set; }
+    public DbSet<Posts> Posts { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
