@@ -100,11 +100,6 @@ namespace Geekiam.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar");
 
-                    b.Property<string>("Identifier")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("varchar");
-
                     b.Property<DateTime>("Modified")
                         .ValueGeneratedOnUpdate()
                         .HasColumnType("TimestampTz")

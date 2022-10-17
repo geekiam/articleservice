@@ -19,6 +19,7 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
 
     public async Task<SingleResponse<Response>> Handle(Command request, CancellationToken cancellationToken)
     {
+        
         return await _services.Create<Sources, Feed, Response>(request.Feed);
     }
 }

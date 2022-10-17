@@ -10,11 +10,7 @@ public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
     public override void Configure(EntityTypeBuilder<Sources> builder)
     {
         builder.ToTable(nameof(Sources).ToLower());
-
-        builder.Property(x => x.Identifier)
-            .HasColumnType(ColumnTypes.Varchar)
-            .HasMaxLength(25)
-            .IsRequired();
+        
         
         builder.Property(x => x.Name)
             .HasColumnType(ColumnTypes.Varchar)

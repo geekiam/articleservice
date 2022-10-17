@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Geekiam.Migrations
 {
     [DbContext(typeof(ArticlesContext))]
-    [Migration("20221016211719_Initial")]
+    [Migration("20221017175520_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,11 +100,6 @@ namespace Geekiam.Migrations
                     b.Property<string>("FeedUrl")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("varchar");
-
-                    b.Property<string>("Identifier")
-                        .IsRequired()
-                        .HasMaxLength(25)
                         .HasColumnType("varchar");
 
                     b.Property<DateTime>("Modified")

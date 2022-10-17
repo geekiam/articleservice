@@ -8,9 +8,9 @@ public class Mapping: Profile
 {
     public Mapping()
     {
-       // TODO:  Complete Mapping
+       
        CreateMap<Sources, Feed>(MemberList.None)
-           
+           .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.FeedUrl))
            ;
     }
 }

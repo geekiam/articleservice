@@ -1,0 +1,24 @@
+
+### Post test
+POST {{host}}/{{websites_resource_name}}/
+accept: application/json
+Content-Type: application/json
+
+{
+  "feed": {
+    "name": "Test Site {{$randomInt}}",
+    "rootUrl": "http://{{$uuid}}",
+    "url": "http://{{$uuid}}"
+  }
+}
+
+> ../../Asserts/Should_be_201.js
+###
+### Get Tests
+GET {{host}}/{{websites_resource_name}}/
+accept: application/json
+Content-Type: application/json
+
+> ../../Asserts/Should_be_200_Ok.js
+
+###

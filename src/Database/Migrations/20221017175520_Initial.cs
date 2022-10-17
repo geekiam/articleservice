@@ -21,7 +21,6 @@ namespace Geekiam.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "uuid_generate_v4()"),
-                    Identifier = table.Column<string>(type: "varchar", maxLength: 25, nullable: false),
                     Name = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
                     RootUrl = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
                     FeedUrl = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
