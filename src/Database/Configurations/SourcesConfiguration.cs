@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Threenine.Configurations.PostgreSql;
 
-namespace Database.Articless.Configurations;
+namespace Database.Configurations;
 
 public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
 {
@@ -17,7 +17,7 @@ public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
             .HasMaxLength(255)
             .IsRequired();
         
-        builder.Property(x => x.RootUrl)
+        builder.Property(x => x.Domain)
             .HasColumnType(ColumnTypes.Varchar)
             .HasMaxLength(255)
             .IsRequired();
@@ -25,8 +25,10 @@ public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
         builder.Property(x => x.FeedUrl)
             .HasColumnType(ColumnTypes.Varchar)
             .HasMaxLength(255)
-            .IsRequired(); 
-        
+            .IsRequired();
+
+        builder.HasIndex(x => x.FeedUrl)
+            .IsUnique();
         
         base.Configure(builder);
     }

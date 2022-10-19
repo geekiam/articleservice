@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Threenine.Configurations.PostgreSql;
 
-namespace Database.Articless.Configurations;
+namespace Database.Configurations;
 
 public class PostsConfiguration : BaseEntityTypeConfiguration<Posts>
 {
@@ -25,6 +25,8 @@ public class PostsConfiguration : BaseEntityTypeConfiguration<Posts>
          .HasColumnType(ColumnTypes.Varchar)
          .HasMaxLength(255)
          .IsRequired();
+
+      builder.HasIndex(x => new { x.Permalink, x.SourceId }).IsUnique();
       
       builder.Property(x => x.Published)
          .HasColumnType(ColumnTypes.Timestamp)

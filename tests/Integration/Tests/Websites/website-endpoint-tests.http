@@ -7,8 +7,8 @@ Content-Type: application/json
 {
   "feed": {
     "name": "Test Site {{$randomInt}}",
-    "rootUrl": "http://{{$uuid}}",
-    "url": "http://{{$uuid}}"
+    "domain": "{{$randomInt}}.com",
+    "url": "http://{{$uuid}}.com/{{$randomInt}}"
   }
 }
 

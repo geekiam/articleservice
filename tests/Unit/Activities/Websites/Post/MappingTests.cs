@@ -1,14 +1,12 @@
-using Dtos.Websites.Post;
-using Geekiam.Data;
-using Threenine.Api.Activities.Websites.Websites.Commands.Post;
-
-namespace Geekiam.Activities.Websites.Post;
 using AutoMapper;
+using Dtos.Websites.Post;
 using FizzWare.NBuilder;
+using Geekiam.Data;
 using Shouldly;
+using Threenine.Api.Activities.Websites.Websites.Commands.Post;
 using Xunit;
 
-
+namespace Geekiam.Activities.Websites.Post;
 
 public class MappingTests
 {
@@ -34,19 +32,9 @@ public class MappingTests
         sources.ShouldSatisfyAllConditions(
             () => sources.ShouldBeOfType<Sources>(),
             () => sources.Name.ShouldBeEquivalentTo(TestFeed.Name),
-            () => sources.RootUrl.ShouldBeEquivalentTo(TestFeed.RootUrl),
-            () => sources.FeedUrl.ShouldBeEquivalentTo(TestFeed.Url)
+            () => sources.Domain.ShouldBeEquivalentTo(TestFeed.Domain),
+            () => sources.FeedUrl.ShouldBeEquivalentTo(TestFeed.Url),
+            () => sources.Identifier.ShouldNotBeNull()
         );
     }
-
-    /*[Fact]
-    public void Should_Map_Actor_to_Response()
-    {
-        var response = _mapper.Map<Response>(TestActor);
-
-        response.ShouldSatisfyAllConditions(
-            () => response.ShouldBeOfType<Response>(),
-            () => response.Id.ShouldBeEquivalentTo(TestActor.Id)
-        );
-    }*/
 }
