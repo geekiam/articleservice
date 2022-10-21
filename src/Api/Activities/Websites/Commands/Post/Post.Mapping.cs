@@ -1,6 +1,4 @@
-using System.Security.Cryptography;
 using AutoMapper;
-
 using Dtos.Websites.Post;
 using Geekiam.Data;
 
@@ -10,8 +8,6 @@ public class Mapping: Profile
 {
     public Mapping()
     {
-        
-        
         CreateMap<Feed, Sources>(MemberList.None)
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Domain, opt => opt.MapFrom(src => src.Domain))
@@ -22,8 +18,14 @@ public class Mapping: Profile
         CreateMap<Sources, Response>(MemberList.None)
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
     }
-    
-    public class IdentifierResolver : IValueResolver<Feed, Sources, string>
+
+    /// <summary>
+    /// Create a unique human readable identifier
+    /// We do this by extracting the name portion of the url because this may be unique, however because
+    /// we potentially could have a number of TLD we append a totally random integer value to it
+    /// </summary>
+    // ReSharper disable once ClassNeverInstantiated.Local
+    private class IdentifierResolver : IValueResolver<Feed, Sources, string>
     {
         public string Resolve(Feed source, Sources destination, string destMember, ResolutionContext context)
         {
