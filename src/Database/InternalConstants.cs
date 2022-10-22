@@ -1,4 +1,4 @@
-namespace Database.Articless;
+namespace Geekiam;
 
 internal static class ConnectionStringNames
 {

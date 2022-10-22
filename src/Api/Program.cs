@@ -1,7 +1,7 @@
 using Api.Behaviours;
 using Api.Middleware;
-using Database.Articless;
 using FluentValidation;
+using Geekiam;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -35,7 +35,8 @@ builder.Services.AddSwaggerGen(c =>
     c.EnableAnnotations();
 });
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
-builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+
+builder.Services.AddValidatorsFromAssemblies(new[] { typeof(Program).Assembly , typeof(ArticlesContext).Assembly});
 builder.Services.AddMediatR(typeof(Program))
     .AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>))
     .AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
@@ -44,7 +45,8 @@ var connectionString = builder.Configuration.GetConnectionString(ConnectionsStri
 builder.Services.AddDbContext<ArticlesContext>(x => x.UseNpgsql(connectionString)).AddUnitOfWork<ArticlesContext>();
 
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddTransient<IDataService, DataService>();
+builder.Services.AddTransient(typeof(IEntityValidationService<>),typeof(EntityValidationService<>));
+builder.Services.AddTransient(typeof(IDataService<>), typeof(DataService<>));
 
 
 var app = builder.Build();

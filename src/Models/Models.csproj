@@ -2,4 +2,9 @@
   <ItemGroup>
     <PackageReference Include="Threenine.Database.Configuration" Version="0.2.3" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\..\..\..\.nuget\packages\fluentvalidation\11.2.2\lib\net6.0\FluentValidation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

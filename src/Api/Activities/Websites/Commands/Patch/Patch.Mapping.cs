@@ -12,9 +12,16 @@ public class Mapping: Profile
         
         CreateMap<Sources, Response>(MemberList.None);
  
-        CreateMap<Sources, Feed>(MemberList.None);
+        CreateMap<Sources, Feed>(MemberList.None)
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.Domain, opt => opt.MapFrom(src => src.Domain))
+            .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.FeedUrl));
+            ;
 
-        CreateMap<Feed, Sources>(MemberList.None);
+        CreateMap<Feed, Sources>(MemberList.None)
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.Domain, opt => opt.MapFrom(src => src.Domain))
+            .ForMember(dest => dest.FeedUrl, opt => opt.MapFrom(src => src.Url));
 
     }
 }

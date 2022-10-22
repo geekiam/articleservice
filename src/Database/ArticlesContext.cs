@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Threenine;
 using Threenine.Configurations.PostgreSql;
 
-namespace Database.Articless;
+namespace Geekiam;
 
 public class ArticlesContext : BaseContext<ArticlesContext>
 {

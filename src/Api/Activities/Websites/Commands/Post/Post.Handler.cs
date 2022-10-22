@@ -7,9 +7,9 @@ namespace Threenine.Api.Activities.Websites.Websites.Commands.Post;
 
 public class Handler : IRequestHandler<Command, SingleResponse<Response>>
 {
-    private readonly IDataService _services;
+    private readonly IDataService<Sources> _services;
 
-    public Handler(IDataService services)
+    public Handler(IDataService<Sources> services)
     {
         _services = services;
     }
@@ -17,6 +17,6 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
     public async Task<SingleResponse<Response>> Handle(Command request, CancellationToken cancellationToken)
     {
        
-        return await _services.Create<Sources, Feed, Response>(request.Feed);
+        return await _services.Create<Feed, Response>(request.Feed);
     }
 }

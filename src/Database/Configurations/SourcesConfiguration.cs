@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Threenine.Configurations.PostgreSql;
 
-namespace Database.Configurations;
+namespace Geekiam.Configurations;
 
 public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
 {

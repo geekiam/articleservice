@@ -1,8 +1,7 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Database.Articless;
+namespace Geekiam;
 
 internal class ArticlesContextFactory : IDesignTimeDbContextFactory<ArticlesContext>
 {
