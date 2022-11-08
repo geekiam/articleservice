@@ -7,4 +7,7 @@
       <HintPath>..\..\..\..\..\.nuget\packages\fluentvalidation\11.2.2\lib\net6.0\FluentValidation.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,6 +1,8 @@
-﻿using System.Reflection;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using Geekiam.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Threenine;
 using Threenine.Configurations.PostgreSql;
 
@@ -23,4 +25,37 @@ public class ArticlesContext : BaseContext<ArticlesContext>
         modelBuilder.HasPostgresExtension(PostgreExtensions.UUIDGenerator);
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
+
+    public override int SaveChanges()
+    {
+        ChangeTracker.Entries()
+            .Where(e => e.State is EntityState.Added or EntityState.Modified)
+            .Select(e => e.Entity).ToList().ForEach(entity =>
+            {
+                var validationContext = new ValidationContext(entity);
+                Validator.ValidateObject(
+                    entity,
+                    validationContext,
+                    validateAllProperties: true);
+            });
+
+        return base.SaveChanges();
+    }
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    {
+         ChangeTracker.Entries()
+            .Where(e => e.State is EntityState.Added or EntityState.Modified)
+            .Select(e => e.Entity).ToList().ForEach(entity =>
+        {
+            var validationContext = new ValidationContext(entity);
+            Validator.ValidateObject(
+                entity,
+                validationContext,
+                validateAllProperties: true);
+        });
+
+        return base.SaveChangesAsync(cancellationToken);
+    }
+    
 }

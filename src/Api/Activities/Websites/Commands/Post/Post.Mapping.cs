@@ -12,6 +12,7 @@ public class Mapping: Profile
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Domain, opt => opt.MapFrom(src => src.Domain))
             .ForMember(dest => dest.FeedUrl, opt => opt.MapFrom(src => src.Url))
+            .ForMember(dest => dest.Protocol, opt => opt.MapFrom(src => src.Protocol))
             .ForMember(dest => dest.Identifier, opt => opt.MapFrom<IdentifierResolver>());
         
 
