@@ -7,8 +7,9 @@ Content-Type: application/json
 {
   "feed": {
     "name": "Test Site {{$randomInt}}",
-    "domain": "{{$randomInt}}.com",
-    "url": "http://{{$uuid}}.com/{{$randomInt}}"
+    "domain": "test{{$randomInt}}.com",
+    "url": "/test/feed.xml",
+    "protocol" : "https"
   }
 }
 

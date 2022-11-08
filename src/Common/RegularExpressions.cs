@@ -14,7 +14,7 @@ public static class RegularExpressions
 
     public const string DomainName = @"\A([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}\Z";
     
-    public const string RelativeUrlPath = @"^([\/][a-zA-Z]+)+\.*(((\?)([a-zA-Z]*=\w*)){1}((&)([a-zA-Z]*=\w*))*)?$";
+    public const string RelativeUrlPath = @"^[^\/]+\/[^\/].*$|^\/[^\/].*$";
     
     
 

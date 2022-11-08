@@ -18,5 +18,7 @@ public class Validator : AbstractValidator<Command>
         RuleFor(x => x.Feed.Url).NotEmpty();
         RuleFor(x => x.Feed.Url).Matches(RegularExpressions.RelativeUrlPath, RegexOptions.IgnoreCase)
             .WithMessage("A relative url must be supplied");
+
+        RuleFor(x => x.Feed.Protocol).NotEmpty();
     }       
 }

@@ -2,6 +2,8 @@
 
 A microservice to build a list of articles from a list of sources to incrementally feed the Geekiam app.
 
+This project structure  was generated using the [API Template Pack](https://www.apitemplatepack.com/ "API Template Pack")
+
 ### Local Development configuration
 
 In order to configure your local environment with all the prerequisites for development a `docker-compose.yml` is provided containing all the infrastructure
