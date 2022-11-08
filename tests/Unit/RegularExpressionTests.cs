@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Text.RegularExpressions;
 using Common;
 using Shouldly;
@@ -8,24 +9,27 @@ namespace Geekiam;
 public class RegularExpressionTests
 {
     [Theory]
-    [InlineData("/poo")]
-    [InlineData("test/feed.xml")]
-    [InlineData("/some-random-permalink")]
-    [InlineData("/feed/")]
-    public void Should_be_Relative_path(string path)
+    [ClassData(typeof(RelativePathTestData))]
+    public void Should_be_Relative_path(string path, bool expectedResult)
     {
         var result = Regex.IsMatch(path, RegularExpressions.RelativeUrlPath);
-        result.ShouldBeTrue();
+        result.ShouldBe(expectedResult);
     }
-    
-    [Theory]
-    [InlineData("garywoodfine.com")]
-    [InlineData("https://threenine.co.uk")]
-    [InlineData("ftp://threenine.co.uk")]
-    public void Should_not_be_Relative_path(string path)
+}
+
+public class RelativePathTestData : IEnumerable<object[]>
+{
+    public IEnumerator<object[]> GetEnumerator()
     {
-        var result = Regex.IsMatch(path, RegularExpressions.RelativeUrlPath);
-        result.ShouldBeFalse();
+        yield return new object[] { "/test", true };
+        yield return new object[] { "test/feed.xml", true };
+        yield return new object[] { "/some-random-permalink", true };
+        yield return new object[] { "/feed/", true };
+        yield return new object[] { "garywoodfine.com", false };
+        yield return new object[] { "https://threenine.co.uk", false };
+        yield return new object[] { "ftp://threenine.co.uk", false };
+        yield return new object[] { "/test-1234-test--3", true };
     }
-    
+
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
