@@ -1,4 +1,4 @@
-namespace Dtos.Websites.Post;
+namespace Domain.Websites.Post;
 
 public class Feed
 {

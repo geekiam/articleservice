@@ -1,5 +1,5 @@
 using AutoMapper;
-using Dtos.Websites.Post;
+using Domain.Websites.Post;
 using FizzWare.NBuilder;
 using Geekiam.Data;
 using Shouldly;

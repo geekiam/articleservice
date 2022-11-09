@@ -1,5 +1,5 @@
 using System.Collections;
-using Dtos.Websites.Post;
+using Domain.Websites.Post;
 using FluentValidation.TestHelper;
 using Threenine.Api.Activities.Websites.Websites.Commands.Post;
 using Xunit;

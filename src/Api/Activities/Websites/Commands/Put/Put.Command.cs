@@ -1,4 +1,4 @@
-using Dtos.Websites.Put;
+using Domain.Websites.Put;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Threenine.ApiResponse;

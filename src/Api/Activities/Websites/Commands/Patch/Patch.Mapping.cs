@@ -1,5 +1,5 @@
 using AutoMapper;
-using Dtos.Websites.Patch;
+using Domain.Websites.Patch;
 using Geekiam.Data;
 
 namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;

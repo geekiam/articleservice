@@ -1,5 +1,5 @@
 
-using Dtos.Websites.Patch;
+using Domain.Websites.Patch;
 using MediatR;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;

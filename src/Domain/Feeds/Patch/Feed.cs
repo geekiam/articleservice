@@ -1,4 +1,4 @@
-namespace Dtos.Websites.Patch;
+namespace Domain.Websites.Patch;
 
 public class Feed
 {

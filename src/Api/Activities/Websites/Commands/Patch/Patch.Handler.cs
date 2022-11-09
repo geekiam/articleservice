@@ -1,4 +1,4 @@
-using Dtos.Websites.Patch;
+using Domain.Websites.Patch;
 using Geekiam.Data;
 using MediatR;
 using Threenine.ApiResponse;

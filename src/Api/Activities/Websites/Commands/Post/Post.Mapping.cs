@@ -1,5 +1,5 @@
 using AutoMapper;
-using Dtos.Websites.Post;
+using Domain.Websites.Post;
 using Geekiam.Data;
 
 namespace  Threenine.Api.Activities.Websites.Websites.Commands.Post;
