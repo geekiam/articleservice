@@ -23,6 +23,21 @@ Content-Type: application/json
 
 > ../../Asserts/Should_be_200_Ok.js
 ###
+
+### put 
+PUT {{host}}/{{websites_resource_name}}/{{website_created_id}}
+accept: */*
+Content-Type: application/json
+
+{
+  "name": "put test {{$randomInt}}",
+  "domain": "puttest{{$randomInt}}.com",
+  "url": "/feed/feed.xml",
+  "protocol": "https"
+}
+
+###
+
 ### Patch test
 PATCH {{host}}/{{websites_resource_name}}/{{website_created_id}}
 accept: text/plain
@@ -31,27 +46,11 @@ Content-Type: application/json-patch+json
 [
   {
     "op": "replace",
-    "value": "patch test {{$randomInt}}",
+    "value": "patch {{$randomInt}} test",
     "path": "name"
   }
 ]
 
-###
-
-
 > ../../Asserts/Should_be_200_Ok.js
-
-###
-
-PUT {{host}}/{{websites_resource_name}}/{{website_created_id}}
-accept: */*
-Content-Type: application/json-patch+json
-
-{
-  "name": "put test {{$randomInt}}",
-  "domain": "puttest{{$randomInt}}.com",
-  "url": "/feed/feed.xml",
-  "protocol": "https"
-}
 
 ###

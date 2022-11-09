@@ -17,3 +17,16 @@ or run the following command on the terminal in the root project directory
 docker compose up -d 
 ```
 
+#### Integration tests
+
+Execute the integration test suite will require the installation of Httpyac
+```shell
+npm i -g httpyac
+```
+
+Once installed you can run the project using the the tests using the code below int he root project directory
+
+```shell
+httpyac tests/Integration/Tests/ --all --env dev
+```
+
