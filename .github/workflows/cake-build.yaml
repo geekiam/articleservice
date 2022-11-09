@@ -1,4 +1,4 @@
-7y yname: cake-build
+name: cake-build
 on:
   push:
     branches:
