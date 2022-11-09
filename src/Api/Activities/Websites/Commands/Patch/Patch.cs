@@ -9,7 +9,7 @@ using Api.Activities;
 namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;
 
 [Route(Routes.Websites)]
-public class Patch : EndpointBaseAsync.WithRequest<Command>.WithActionResult<SingleResponse<Response>>
+public class Patch : EndpointBaseAsync.WithRequest<Command>.WithActionResult<Response>
 {
     private readonly IMediator _mediator;
 
@@ -25,8 +25,8 @@ public class Patch : EndpointBaseAsync.WithRequest<Command>.WithActionResult<Sin
         OperationId = "f564d830-2160-471c-b51b-bb878b229a15",
         Tags = new[] { Routes.Websites })
     ]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Response))]
-    public override async Task<ActionResult<SingleResponse<Response>>> HandleAsync([FromRoute] Command request, CancellationToken cancellationToken = new())
+  
+    public override async Task<ActionResult<Response>> HandleAsync([FromRoute] Command request, CancellationToken cancellationToken = new())
     {
         var result = await _mediator.Send(request, cancellationToken);
 

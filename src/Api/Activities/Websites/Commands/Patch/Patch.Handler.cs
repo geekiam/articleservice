@@ -1,12 +1,7 @@
-using Dtos;
-using MediatR;
-using Threenine;
-using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
-using Threenine.ApiResponse;
-
 using Dtos.Websites.Patch;
 using Geekiam.Data;
+using MediatR;
+using Threenine.ApiResponse;
 
 namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;
 

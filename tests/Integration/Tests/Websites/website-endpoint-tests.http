@@ -1,6 +1,5 @@
-
 ### Post test
-POST {{host}}/{{websites_resource_name}}/
+POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
@@ -13,31 +12,46 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Should_be_201.js
+> ../../Asserts/Websites/Should_be_201_with_id.js
+
 ###
 
 ### Get Tests
-GET {{host}}/{{websites_resource_name}}/
+GET {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
+
+> ../../Asserts/Should_be_200_Ok.js
+###
+### Patch test
+PATCH {{host}}/{{websites_resource_name}}/{{website_created_id}}
+accept: text/plain
+Content-Type: application/json-patch+json
+
+[
+  {
+    "op": "replace",
+    "value": "patch test {{$randomInt}}",
+    "path": "name"
+  }
+]
+
+###
+
 
 > ../../Asserts/Should_be_200_Ok.js
 
 ###
 
+PUT {{host}}/{{websites_resource_name}}/{{website_created_id}}
+accept: */*
+Content-Type: application/json-patch+json
 
-### Should not PATCH email field
-PATCH  {{host}}/{{websites_resource_name}}/edc1bc05-4ae9-478e-9539-e1c569180b23
-Content-Type: application/json-patch+json; ext=jsonpatch
-
-[
-  {
-    "op": "replace",
-    "value": "Test Organisation",
-    "path": "name"
-  }
-]
-
-> ../../Asserts/Should_be_500.js
+{
+  "name": "put test {{$randomInt}}",
+  "domain": "puttest{{$randomInt}}.com",
+  "url": "/feed/feed.xml",
+  "protocol": "https"
+}
 
 ###

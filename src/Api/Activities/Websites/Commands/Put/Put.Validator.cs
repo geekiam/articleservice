@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+using Common;
 using FluentValidation;
 namespace  Threenine.Api.Activities.Websites.Websites.Commands.Put;
 
@@ -7,6 +9,16 @@ public class Validator : AbstractValidator<Command>
     {
         RuleFor(x => x.Id).NotEmpty();
         
-        // TODO: Add Validation for Object
+        RuleFor(x => x.Feed.Name).NotEmpty();
+        
+        RuleFor(x => x.Feed.Domain).NotEmpty();
+        RuleFor(x => x.Feed.Domain).Matches(RegularExpressions.DomainName, RegexOptions.IgnoreCase)
+            .WithMessage("An absolute URL is required");
+
+        RuleFor(x => x.Feed.Url).NotEmpty();
+        RuleFor(x => x.Feed.Url).Matches(RegularExpressions.RelativeUrlPath, RegexOptions.IgnoreCase)
+            .WithMessage("A relative url must be supplied");
+
+        RuleFor(x => x.Feed.Protocol).NotEmpty();
     }       
 }
