@@ -16,6 +16,23 @@ namespace Geekiam.Migrations
                 .Annotation("Npgsql:PostgresExtension:uuid-ossp", ",,");
 
             migrationBuilder.CreateTable(
+                name: "categories",
+                schema: "Articles",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "uuid_generate_v4()"),
+                    Name = table.Column<string>(type: "varchar", maxLength: 65, nullable: false),
+                    Permalink = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
+                    created = table.Column<DateTime>(type: "TimestampTz", nullable: false),
+                    modified = table.Column<DateTime>(type: "TimestampTz", nullable: false),
+                    active = table.Column<bool>(type: "boolean", nullable: true, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_categories", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "sources",
                 schema: "Articles",
                 columns: table => new
@@ -62,6 +79,37 @@ namespace Geekiam.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "sourcecategory",
+                schema: "Articles",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "uuid_generate_v4()"),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
+                    created = table.Column<DateTime>(type: "TimestampTz", nullable: false),
+                    modified = table.Column<DateTime>(type: "TimestampTz", nullable: false),
+                    active = table.Column<bool>(type: "boolean", nullable: true, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_sourcecategory", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_sourcecategory_categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalSchema: "Articles",
+                        principalTable: "categories",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_sourcecategory_sources_SourceId",
+                        column: x => x.SourceId,
+                        principalSchema: "Articles",
+                        principalTable: "sources",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_posts_Permalink_SourceId",
                 schema: "Articles",
@@ -73,6 +121,18 @@ namespace Geekiam.Migrations
                 name: "IX_posts_SourceId",
                 schema: "Articles",
                 table: "posts",
+                column: "SourceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_sourcecategory_CategoryId",
+                schema: "Articles",
+                table: "sourcecategory",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_sourcecategory_SourceId",
+                schema: "Articles",
+                table: "sourcecategory",
                 column: "SourceId");
 
             migrationBuilder.CreateIndex(
@@ -94,6 +154,14 @@ namespace Geekiam.Migrations
         {
             migrationBuilder.DropTable(
                 name: "posts",
+                schema: "Articles");
+
+            migrationBuilder.DropTable(
+                name: "sourcecategory",
+                schema: "Articles");
+
+            migrationBuilder.DropTable(
+                name: "categories",
                 schema: "Articles");
 
             migrationBuilder.DropTable(

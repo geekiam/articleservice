@@ -15,6 +15,8 @@ public class Sources : BaseEntity, IValidatableObject
     public string  Protocol { get; set; }
     
     public virtual ICollection<Posts> Posts { get; set; }
+    
+    public virtual ICollection<SourceCategory> SourceCategories { get; set; }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

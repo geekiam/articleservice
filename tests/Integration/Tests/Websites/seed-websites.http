@@ -25,7 +25,7 @@ Content-Type: application/json
   "feed": {
     "name": "Crypto News: Latest Cryptocurrency News, Bitcoin News, Ethereum News and Price Data",
     "domain": "cryptonews.com",
-    "url": "/news/feed",
+    "url": "/news/feed/",
     "protocol" : "https"
   }
 }
