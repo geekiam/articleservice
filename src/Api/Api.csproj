@@ -30,6 +30,6 @@
        <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Activities\Process\Commands" />
+      <Folder Include="Activities\Articles\Commands" />
     </ItemGroup>
 </Project> 

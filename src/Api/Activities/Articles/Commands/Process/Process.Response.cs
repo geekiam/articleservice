@@ -1,6 +1,4 @@
-using System;
-
-namespace Api.Process;
+namespace Geekiam.Activities.Articles.Commands.Process;
 
 public class Response
 {

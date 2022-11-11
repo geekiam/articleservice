@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
 
-namespace Api.Process;
+namespace Geekiam.Activities.Articles.Commands.Process;
 
-[Route(Routes.Process)]
+[Route(Routes.Articles)]
 public class Process : EndpointBaseAsync.WithRequest<Command>.WithActionResult<SingleResponse<Response>>
 {
     private readonly IMediator _mediator;
@@ -19,10 +19,10 @@ public class Process : EndpointBaseAsync.WithRequest<Command>.WithActionResult<S
     
     [HttpPost(":process")]
     [SwaggerOperation(
-        Summary = "Process",
-        Description = "Process",
+        Summary = "Articles",
+        Description = "Articles",
         OperationId = "d9025b3d-0755-4731-898e-7994dda445d7",
-        Tags = new[] { Routes.Process })
+        Tags = new[] { Routes.Articles })
     ]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public override async Task<ActionResult<SingleResponse<Response>>> HandleAsync([FromBody] Command request, CancellationToken cancellationToken = new())
@@ -30,7 +30,7 @@ public class Process : EndpointBaseAsync.WithRequest<Command>.WithActionResult<S
         var result = await _mediator.Send(request, cancellationToken);
         
         if (result.IsValid)
-            return new CreatedResult(new Uri(Routes.Process, UriKind.Relative), new { result.Item.Id });
+            return new CreatedResult(new Uri(Routes.Articles, UriKind.Relative), new { result.Item.Id });
 
         return await HandleErrors(result.Errors);
     }

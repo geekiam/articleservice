@@ -2,8 +2,7 @@ using System.ServiceModel.Syndication;
 using AutoMapper;
 using Geekiam.Data;
 
-
-namespace Api.Process;
+namespace Geekiam.Activities.Articles.Commands.Process;
 
 public class Mapping: Profile
 {

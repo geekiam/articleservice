@@ -1,7 +1,6 @@
-using System;
 using FluentValidation;
 
-namespace Api.Process;
+namespace Geekiam.Activities.Articles.Commands.Process;
 
 public class Validator : AbstractValidator<Command>
 {
