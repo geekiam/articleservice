@@ -1,37 +1,37 @@
+using Api.Activities;
 using Ardalis.ApiEndpoints;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
-using Api.Activities;
 
-namespace  Threenine.Api.Activities.Websites.Websites.Commands.Put;
+namespace Api.Process;
 
-[Route(Routes.Websites)]
-public class Put : EndpointBaseAsync.WithRequest<Command>.WithActionResult<SingleResponse<Response>>
+[Route(Routes.Process)]
+public class Process : EndpointBaseAsync.WithRequest<Command>.WithActionResult<SingleResponse<Response>>
 {
     private readonly IMediator _mediator;
 
-    public Put(IMediator mediator)
+    public Process(IMediator mediator)
     {
         _mediator = mediator;
     }
     
-    [HttpPut("{id:guid}")]
+    [HttpPost(":process")]
     [SwaggerOperation(
-        Summary = "Put",
-        Description = "Put",
-        OperationId = "d4ea45d8-8e78-4d4c-b4b1-f7ee72679ce9",
-        Tags = new[] { Routes.Websites })
+        Summary = "Process",
+        Description = "Process",
+        OperationId = "d9025b3d-0755-4731-898e-7994dda445d7",
+        Tags = new[] { Routes.Process })
     ]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public override async Task<ActionResult<SingleResponse<Response>>> HandleAsync([FromRoute] Command request, CancellationToken cancellationToken = new())
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    public override async Task<ActionResult<SingleResponse<Response>>> HandleAsync([FromBody] Command request, CancellationToken cancellationToken = new())
     {
         var result = await _mediator.Send(request, cancellationToken);
-
-        if (result.IsValid)
-            return new NoContentResult();
         
+        if (result.IsValid)
+            return new CreatedResult(new Uri(Routes.Process, UriKind.Relative), new { result.Item.Id });
+
         return await HandleErrors(result.Errors);
     }
     

@@ -1,11 +1,12 @@
+using System;
 using FluentValidation;
 
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;
+namespace Api.Process;
 
 public class Validator : AbstractValidator<Command>
 {
     public Validator()
     {
-        RuleFor(x => x.Id).NotEmpty();     
+             
     }       
 }

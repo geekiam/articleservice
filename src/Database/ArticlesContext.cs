@@ -2,7 +2,6 @@
 using System.Reflection;
 using Geekiam.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Threenine;
 using Threenine.Configurations.PostgreSql;
 

@@ -1,5 +1,3 @@
-using System;
-
 namespace Api.Exceptions
 {
     public class ApiException : Exception

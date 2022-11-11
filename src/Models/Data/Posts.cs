@@ -1,11 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 using Threenine.Models;
 
 namespace Geekiam.Data;
 
-public class Posts : BaseEntity, IValidatableObject
+public class Posts : BaseEntity
 {
     public string Title { get; set; }
     public string Summary { get; set; }
@@ -16,8 +14,5 @@ public class Posts : BaseEntity, IValidatableObject
     public Guid SourceId { get; set; }
 
 
-    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-    {
-        throw new NotImplementedException();
-    }
+  
 }
