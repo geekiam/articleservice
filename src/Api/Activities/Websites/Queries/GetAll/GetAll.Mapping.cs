@@ -1,6 +1,7 @@
 using AutoMapper;
+using Domain.Websites.Get;
 using Geekiam.Data;
-using Geekiam.Feeds.Get;
+
 
 namespace Threenine.Api.Activities.Websites.Websites.Queries.GetAll;
 
@@ -11,7 +12,7 @@ public class Mapping: Profile
        
        CreateMap<Sources, Feed>(MemberList.None)
            .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.FeedUrl))
-           .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Identifier))
+           .ForMember(dest => dest.Identifier, opt => opt.MapFrom(src => src.Identifier))
            ;
     }
 }

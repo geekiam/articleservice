@@ -1,6 +1,6 @@
 using AutoMapper;
+using Domain.Websites.Get;
 using Geekiam.Data;
-using Geekiam.Feeds.Get;
 using MediatR;
 using Threenine.ApiResponse;
 using Threenine.Data;

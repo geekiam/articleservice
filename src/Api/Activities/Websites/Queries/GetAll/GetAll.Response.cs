@@ -1,4 +1,4 @@
-using Geekiam.Feeds.Get;
+using Domain.Websites.Get;
 
 namespace Threenine.Api.Activities.Websites.Websites.Queries.GetAll;
 

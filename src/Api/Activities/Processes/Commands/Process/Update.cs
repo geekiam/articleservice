@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
 
-namespace Geekiam.Activities.Articles.Commands.Process;
+namespace Geekiam.Activities.Processes.Commands.Process;
 
-[Route(Routes.Articles)]
-public class Process : EndpointBaseAsync.WithRequest<Command>.WithActionResult<SingleResponse<Response>>
+[Route(Routes.Processes)]
+public class Process : EndpointBaseAsync.WithRequest<Command>.WithoutResult
 {
     private readonly IMediator _mediator;
 
@@ -17,20 +17,20 @@ public class Process : EndpointBaseAsync.WithRequest<Command>.WithActionResult<S
         _mediator = mediator;
     }
     
-    [HttpPost(":process")]
+    [HttpPost(":update")]
     [SwaggerOperation(
-        Summary = "Articles",
-        Description = "Articles",
+        Summary = "Processes",
+        Description = "Processes",
         OperationId = "d9025b3d-0755-4731-898e-7994dda445d7",
-        Tags = new[] { Routes.Articles })
+        Tags = new[] { Routes.Processes })
     ]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    public override async Task<ActionResult<SingleResponse<Response>>> HandleAsync([FromBody] Command request, CancellationToken cancellationToken = new())
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public override async Task<ActionResult> HandleAsync([FromBody] Command request, CancellationToken cancellationToken = new())
     {
         var result = await _mediator.Send(request, cancellationToken);
-        
+
         if (result.IsValid)
-            return new CreatedResult(new Uri(Routes.Articles, UriKind.Relative), new { result.Item.Id });
+            return new OkResult();
 
         return await HandleErrors(result.Errors);
     }

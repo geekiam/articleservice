@@ -1,12 +1,13 @@
 using System.ServiceModel.Syndication;
 using System.Xml;
 using AutoMapper;
+using Common;
 using Geekiam.Data;
 using MediatR;
 using Threenine.ApiResponse;
 using Threenine.Data;
 
-namespace Geekiam.Activities.Articles.Commands.Process;
+namespace Geekiam.Activities.Processes.Commands.Process;
 
 public class Handler : IRequestHandler<Command, SingleResponse<Response>>
 {
@@ -38,7 +39,7 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
             {
                 Permalink = y.Links[0].Uri.ToString(),
                 Title = y.Title.Text,
-                Summary = y.Summary.Text,
+                Summary = y.Summary.Text.RemoveHtmlTags(),
                 SourceId = website.Id,
                 Published = y.PublishDate.UtcDateTime
             };

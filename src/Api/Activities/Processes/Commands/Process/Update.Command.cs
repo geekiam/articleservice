@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Threenine.ApiResponse;
 
-namespace Geekiam.Activities.Articles.Commands.Process;
+namespace Geekiam.Activities.Processes.Commands.Process;
 
 public class Command : IRequest<SingleResponse<Response>>
 {

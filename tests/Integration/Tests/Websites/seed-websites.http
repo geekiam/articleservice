@@ -51,3 +51,22 @@ Content-Type: application/json
 
 ###
 
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "feed": {
+    "name": "Coin Telegraph - Bitcoin, Ethereum, Crypto News & Price Indexes",
+    "domain": "cointelegraph.com",
+    "url": "/rss",
+    "protocol" : "https"
+  }
+}
+
+> ../../Asserts/Websites/Should_be_201_with_id.js
+
+###
+
+https://cointelegraph.com/rss-feeds
