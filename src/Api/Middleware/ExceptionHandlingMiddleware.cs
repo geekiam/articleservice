@@ -1,7 +1,7 @@
 using System.Text.Json;
-using Api.Exceptions;
+using Geekiam.Exceptions;
 
-namespace Api.Middleware
+namespace Geekiam.Middleware
 {
     internal class ExceptionHandlingMiddleware : IMiddleware
     {

@@ -1,4 +1,4 @@
-﻿namespace Common;
+﻿namespace Geekiam;
 
 public static class RegularExpressions
 {

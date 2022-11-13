@@ -29,7 +29,4 @@
        <ProjectReference Include="..\Database\Database.csproj" />
        <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Activities\Processes\Commands" />
-    </ItemGroup>
 </Project> 

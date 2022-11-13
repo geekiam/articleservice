@@ -1,9 +1,8 @@
 using AutoMapper;
-using Domain.Websites.Get;
 using Geekiam.Data;
+using Geekiam.Feeds.Get;
 
-
-namespace Threenine.Api.Activities.Websites.Websites.Queries.GetAll;
+namespace Geekiam.Activities.Websites.Queries.GetAll;
 
 public class Mapping: Profile
 {

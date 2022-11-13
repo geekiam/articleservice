@@ -1,5 +1,6 @@
 using FluentValidation;
-namespace Threenine.Api.Activities.Websites.Websites.Queries.GetbyId;
+
+namespace Geekiam.Activities.Websites.Queries.GetbyId;
 
 public class Validator : AbstractValidator<Query>
 {

@@ -1,9 +1,9 @@
 using AutoMapper;
-using Domain.Websites.Post;
 using FizzWare.NBuilder;
+using Geekiam.Activities.Websites.Commands.Post;
 using Geekiam.Data;
+using Geekiam.Feeds.Post;
 using Shouldly;
-using Threenine.Api.Activities.Websites.Websites.Commands.Post;
 using Xunit;
 
 namespace Geekiam.Activities.Websites.Post;

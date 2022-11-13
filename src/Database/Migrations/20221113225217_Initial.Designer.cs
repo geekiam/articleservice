@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Geekiam.Migrations
 {
     [DbContext(typeof(ArticlesContext))]
-    [Migration("20221111211027_Initial")]
+    [Migration("20221113225217_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -193,6 +193,16 @@ namespace Geekiam.Migrations
                         .HasMaxLength(75)
                         .HasColumnType("varchar");
 
+                    b.Property<DateTime>("LastUpdate")
+                        .HasColumnType("TimestampTz");
+
+                    b.Property<string>("Media")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(6)
+                        .HasColumnType("varchar")
+                        .HasDefaultValue("Text");
+
                     b.Property<DateTime>("Modified")
                         .ValueGeneratedOnUpdate()
                         .HasColumnType("TimestampTz")
@@ -208,12 +218,19 @@ namespace Geekiam.Migrations
                         .HasMaxLength(7)
                         .HasColumnType("varchar");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar")
+                        .HasDefaultValue("Moderate");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Identifier")
                         .IsUnique();
 
-                    b.HasIndex("Name", "Domain")
+                    b.HasIndex("FeedUrl", "Domain")
                         .IsUnique();
 
                     b.ToTable("sources", "Articles");
@@ -232,33 +249,33 @@ namespace Geekiam.Migrations
 
             modelBuilder.Entity("Geekiam.Data.SourceCategory", b =>
                 {
-                    b.HasOne("Geekiam.Data.Categories", "Categories")
-                        .WithMany("SourceCategories")
+                    b.HasOne("Geekiam.Data.Categories", "Category")
+                        .WithMany("Sources")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Geekiam.Data.Sources", "Source")
-                        .WithMany("SourceCategories")
+                        .WithMany("Categories")
                         .HasForeignKey("SourceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Categories");
+                    b.Navigation("Category");
 
                     b.Navigation("Source");
                 });
 
             modelBuilder.Entity("Geekiam.Data.Categories", b =>
                 {
-                    b.Navigation("SourceCategories");
+                    b.Navigation("Sources");
                 });
 
             modelBuilder.Entity("Geekiam.Data.Sources", b =>
                 {
-                    b.Navigation("Posts");
+                    b.Navigation("Categories");
 
-                    b.Navigation("SourceCategories");
+                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }

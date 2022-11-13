@@ -1,4 +1,4 @@
-namespace Api.Exceptions
+namespace Geekiam.Exceptions
 {
     public class ApiException : Exception
     {

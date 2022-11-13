@@ -1,4 +1,4 @@
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Post;
+namespace Geekiam.Activities.Websites.Commands.Post;
 
 public class Response
 {

@@ -3,10 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
-using Api.Activities;
-using static Api.Activities.Routes;
 
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;
+namespace Geekiam.Activities.Websites.Commands.Patch;
 
 [Route(Routes.Websites)]
 public class Patch : EndpointBaseAsync.WithRequest<Command>.WithActionResult<Response>

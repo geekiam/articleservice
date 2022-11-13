@@ -9,6 +9,6 @@ public class SourceCategory : BaseEntity
     public Sources Source { get; set; }
 
     public Guid CategoryId { get; set; }
-    public Categories Categories { get; set; }
+    public Categories Category { get; set; }
     
 }

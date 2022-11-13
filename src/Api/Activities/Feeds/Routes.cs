@@ -2,5 +2,5 @@ namespace Api.Activities;
 
 internal static partial class Routes
 {
-    internal const string Processes = "processes";
+ internal const string Feeds = "feeds";
 }

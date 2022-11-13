@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
-using Common;
 using Threenine.Models;
 
 namespace Geekiam.Data;
@@ -14,9 +13,16 @@ public class Sources : BaseEntity, IValidatableObject
     public string FeedUrl { get; set; }
     public string  Protocol { get; set; }
     
+    public DateTime LastUpdate { get; set; } 
+    public string Status { get; set; }
+
+    public string Media { get; set; }
+    
     public virtual ICollection<Posts> Posts { get; set; }
     
-    public virtual ICollection<SourceCategory> SourceCategories { get; set; }
+    
+    
+    public virtual ICollection<SourceCategory> Categories { get; set; }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

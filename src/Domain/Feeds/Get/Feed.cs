@@ -1,4 +1,4 @@
-namespace Domain.Websites.Get;
+namespace Geekiam.Feeds.Get;
 
 public class Feed
 {

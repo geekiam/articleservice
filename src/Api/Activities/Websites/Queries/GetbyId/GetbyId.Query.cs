@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Threenine.ApiResponse;
 
-namespace Threenine.Api.Activities.Websites.Websites.Queries.GetbyId;
+namespace Geekiam.Activities.Websites.Queries.GetbyId;
 
 public class Query : IRequest<SingleResponse<Response>>
 {

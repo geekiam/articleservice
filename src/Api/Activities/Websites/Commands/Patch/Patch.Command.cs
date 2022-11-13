@@ -1,11 +1,10 @@
-
-using Domain.Websites.Patch;
+using Geekiam.Feeds.Patch;
 using MediatR;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Threenine.ApiResponse;
 
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;
+namespace Geekiam.Activities.Websites.Commands.Patch;
 
 public class Command : IRequest<SingleResponse<Response>>
 {

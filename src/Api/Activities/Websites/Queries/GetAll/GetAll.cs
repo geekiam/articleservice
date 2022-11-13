@@ -3,9 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
-using Api.Activities;
 
-namespace Threenine.Api.Activities.Websites.Websites.Queries.GetAll;
+namespace Geekiam.Activities.Websites.Queries.GetAll;
 
 [Route(Routes.Websites)]
 public class GetAll : EndpointBaseAsync.WithoutRequest.WithActionResult<SingleResponse<Response>>

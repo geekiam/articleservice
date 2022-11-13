@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
-using Common;
 using FluentValidation;
-namespace  Threenine.Api.Activities.Websites.Websites.Commands.Post;
+
+namespace  Geekiam.Activities.Websites.Commands.Post;
 
 public class Validator : AbstractValidator<Command>
 {

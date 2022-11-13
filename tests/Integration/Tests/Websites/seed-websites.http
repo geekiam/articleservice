@@ -8,7 +8,8 @@ Content-Type: application/json
     "name": "Gary Woodfine - Opinionated Software Developer",
     "domain": "garywoodfine.com",
     "url": "/feed",
-    "protocol" : "https"
+    "protocol" : "https",
+    "media": "text"
   }
 }
 
@@ -26,7 +27,8 @@ Content-Type: application/json
     "name": "Crypto News: Latest Cryptocurrency News, Bitcoin News, Ethereum News and Price Data",
     "domain": "cryptonews.com",
     "url": "/news/feed/",
-    "protocol" : "https"
+    "protocol" : "https",
+    "media": "text"
   }
 }
 
@@ -43,7 +45,8 @@ Content-Type: application/json
     "name": "Bitcoin Magazine - Bitcoin News, Articles and Expert Insights",
     "domain": "bitcoinmagazine.com",
     "url": "/.rss/full/",
-    "protocol" : "https"
+    "protocol" : "https",
+    "media": "text"
   }
 }
 
@@ -61,7 +64,8 @@ Content-Type: application/json
     "name": "Coin Telegraph - Bitcoin, Ethereum, Crypto News & Price Indexes",
     "domain": "cointelegraph.com",
     "url": "/rss",
-    "protocol" : "https"
+    "protocol" : "https",
+    "media": "text"
   }
 }
 
@@ -69,4 +73,3 @@ Content-Type: application/json
 
 ###
 
-https://cointelegraph.com/rss-feeds

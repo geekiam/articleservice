@@ -1,9 +1,10 @@
-using Domain.Websites.Patch;
 using Geekiam.Data;
+using Geekiam.Feeds.Patch;
 using MediatR;
+using Threenine;
 using Threenine.ApiResponse;
 
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;
+namespace Geekiam.Activities.Websites.Commands.Patch;
 
 public class Handler : IRequestHandler<Command, SingleResponse<Response>>
 {

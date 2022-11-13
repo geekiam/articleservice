@@ -43,6 +43,9 @@ namespace Geekiam.Migrations
                     Domain = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
                     FeedUrl = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
                     Protocol = table.Column<string>(type: "varchar", maxLength: 7, nullable: false),
+                    LastUpdate = table.Column<DateTime>(type: "TimestampTz", nullable: false),
+                    Status = table.Column<string>(type: "varchar", maxLength: 15, nullable: false, defaultValue: "Moderate"),
+                    Media = table.Column<string>(type: "varchar", maxLength: 6, nullable: false, defaultValue: "Text"),
                     created = table.Column<DateTime>(type: "TimestampTz", nullable: false),
                     modified = table.Column<DateTime>(type: "TimestampTz", nullable: false),
                     active = table.Column<bool>(type: "boolean", nullable: true, defaultValue: true)
@@ -136,17 +139,17 @@ namespace Geekiam.Migrations
                 column: "SourceId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_sources_FeedUrl_Domain",
+                schema: "Articles",
+                table: "sources",
+                columns: new[] { "FeedUrl", "Domain" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_sources_Identifier",
                 schema: "Articles",
                 table: "sources",
                 column: "Identifier",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_sources_Name_Domain",
-                schema: "Articles",
-                table: "sources",
-                columns: new[] { "Name", "Domain" },
                 unique: true);
         }
 

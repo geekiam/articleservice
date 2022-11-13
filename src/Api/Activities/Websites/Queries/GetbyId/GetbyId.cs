@@ -3,9 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
-using Api.Activities;
 
-namespace Threenine.Api.Activities.Websites.Websites.Queries.GetbyId;
+namespace Geekiam.Activities.Websites.Queries.GetbyId;
 
 [Route(Routes.Websites)]
 public class GetbyId : EndpointBaseAsync.WithRequest<Query>.WithActionResult<SingleResponse<Response>>

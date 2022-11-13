@@ -4,7 +4,7 @@ using MediatR;
 using Threenine.ApiResponse;
 using Threenine.Data;
 
-namespace Threenine.Api.Activities.Websites.Websites.Queries.GetbyId;
+namespace Geekiam.Activities.Websites.Queries.GetbyId;
 
 public class Handler : IRequestHandler<Query, SingleResponse<Response>>
 {

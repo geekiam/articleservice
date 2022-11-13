@@ -1,6 +1,6 @@
-using Domain.Websites.Get;
+using Geekiam.Feeds.Get;
 
-namespace Threenine.Api.Activities.Websites.Websites.Queries.GetbyId;
+namespace Geekiam.Activities.Websites.Queries.GetbyId;
 
 public class Response
 {

@@ -1,4 +1,4 @@
-namespace Api.Exceptions
+namespace Geekiam.Exceptions
 {
     [Serializable]
     public class NotFoundException : ApiException

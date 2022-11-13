@@ -2,7 +2,7 @@ using System.Reflection;
 using MediatR;
 using ILogger = Serilog.ILogger;
 
-namespace Api.Behaviours
+namespace Geekiam.Behaviours
 {
     public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {

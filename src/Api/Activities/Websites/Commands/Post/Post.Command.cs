@@ -1,9 +1,9 @@
-using Domain.Websites.Post;
+using Geekiam.Feeds.Post;
 using MediatR;
-using Threenine.ApiResponse;
 using Microsoft.AspNetCore.Mvc;
+using Threenine.ApiResponse;
 
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Post;
+namespace Geekiam.Activities.Websites.Commands.Post;
 
 public class Command : IRequest<SingleResponse<Response>>
 {

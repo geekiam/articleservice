@@ -1,8 +1,8 @@
 using AutoMapper;
-using Domain.Websites.Patch;
 using Geekiam.Data;
+using Geekiam.Feeds.Patch;
 
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;
+namespace Geekiam.Activities.Websites.Commands.Patch;
 
 public class Mapping: Profile
 {

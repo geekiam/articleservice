@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Patch;
+namespace Geekiam.Activities.Websites.Commands.Patch;
 
 public class Validator : AbstractValidator<Command>
 {

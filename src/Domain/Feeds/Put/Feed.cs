@@ -1,4 +1,4 @@
-namespace Domain.Websites.Put;
+namespace Geekiam.Feeds.Put;
 
 public class Feed
 {

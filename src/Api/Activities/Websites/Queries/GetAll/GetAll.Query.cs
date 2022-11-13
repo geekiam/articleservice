@@ -1,7 +1,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Threenine.ApiResponse;
-namespace Threenine.Api.Activities.Websites.Websites.Queries.GetAll;
+
+namespace Geekiam.Activities.Websites.Queries.GetAll;
 
 public class Query : IRequest<SingleResponse<Response>>
 {

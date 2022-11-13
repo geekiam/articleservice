@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
 
-namespace Geekiam.Activities.Processes.Commands.Process;
+namespace Geekiam.Activities.Feeds.Commands.Update;
 
-[Route(Routes.Processes)]
+[Route(Routes.Feeds)]
 public class Process : EndpointBaseAsync.WithRequest<Command>.WithoutResult
 {
     private readonly IMediator _mediator;
@@ -22,7 +22,7 @@ public class Process : EndpointBaseAsync.WithRequest<Command>.WithoutResult
         Summary = "Processes",
         Description = "Processes",
         OperationId = "d9025b3d-0755-4731-898e-7994dda445d7",
-        Tags = new[] { Routes.Processes })
+        Tags = new[] { Routes.Feeds })
     ]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public override async Task<ActionResult> HandleAsync([FromBody] Command request, CancellationToken cancellationToken = new())

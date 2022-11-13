@@ -1,7 +1,8 @@
-using Api.Behaviours;
-using Api.Middleware;
 using FluentValidation;
 using Geekiam;
+using Geekiam.Behaviours;
+using Geekiam.Helpers;
+using Geekiam.Middleware;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;

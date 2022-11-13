@@ -1,4 +1,4 @@
-namespace Api.Activities;
+namespace Geekiam.Activities.Websites;
 
 internal static partial class Routes
 {

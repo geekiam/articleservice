@@ -1,11 +1,11 @@
 using AutoMapper;
-using Domain.Websites.Get;
 using Geekiam.Data;
+using Geekiam.Feeds.Get;
 using MediatR;
 using Threenine.ApiResponse;
 using Threenine.Data;
 
-namespace  Threenine.Api.Activities.Websites.Websites.Queries.GetAll;
+namespace  Geekiam.Activities.Websites.Queries.GetAll;
 
 public class Handler : IRequestHandler<Query, SingleResponse<Response>>
 {

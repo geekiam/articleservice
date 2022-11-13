@@ -1,4 +1,4 @@
-namespace Domain.Websites.Patch;
+namespace Geekiam.Feeds.Patch;
 
 public class Feed
 {

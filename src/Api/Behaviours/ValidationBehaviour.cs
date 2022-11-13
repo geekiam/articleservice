@@ -2,7 +2,7 @@ using FluentValidation;
 using MediatR;
 using ILogger = Serilog.ILogger;
 
-namespace Api.Behaviours
+namespace Geekiam.Behaviours
 {
     public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest,TResponse>
         where TResponse : class where TRequest : IRequest<TResponse>

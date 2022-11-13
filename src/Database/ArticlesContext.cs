@@ -18,6 +18,8 @@ public class ArticlesContext : BaseContext<ArticlesContext>
 
     public DbSet<Posts> Posts { get; set; }
     
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(DefaultSchema.Name);

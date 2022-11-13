@@ -1,7 +1,7 @@
 using System.Collections;
-using Domain.Websites.Post;
 using FluentValidation.TestHelper;
-using Threenine.Api.Activities.Websites.Websites.Commands.Post;
+using Geekiam.Activities.Websites.Commands.Post;
+using Geekiam.Feeds.Post;
 using Xunit;
 
 namespace Geekiam.Activities.Websites.Post;

@@ -3,9 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
-using Api.Activities;
 
-namespace Threenine.Api.Activities.Websites.Websites.Commands.Post;
+namespace Geekiam.Activities.Websites.Commands.Post;
 
 [Route(Routes.Websites)]
 public class Post : EndpointBaseAsync.WithRequest<Command>.WithActionResult<SingleResponse<Response>>

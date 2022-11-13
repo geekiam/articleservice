@@ -1,8 +1,8 @@
 using AutoMapper;
-using Domain.Websites.Post;
 using Geekiam.Data;
+using Geekiam.Feeds.Post;
 
-namespace  Threenine.Api.Activities.Websites.Websites.Commands.Post;
+namespace  Geekiam.Activities.Websites.Commands.Post;
 
 public class Mapping: Profile
 {
@@ -13,7 +13,8 @@ public class Mapping: Profile
             .ForMember(dest => dest.Domain, opt => opt.MapFrom(src => src.Domain))
             .ForMember(dest => dest.FeedUrl, opt => opt.MapFrom(src => src.Url))
             .ForMember(dest => dest.Protocol, opt => opt.MapFrom(src => src.Protocol))
-            .ForMember(dest => dest.Identifier, opt => opt.MapFrom<IdentifierResolver>());
+            .ForMember(dest => dest.Identifier, opt => opt.MapFrom<IdentifierResolver>())
+            .ForMember(dest => dest.Media, opt => opt.MapFrom<MediaResolver>());
         
 
         CreateMap<Sources, Response>(MemberList.None)
@@ -33,6 +34,20 @@ public class Mapping: Profile
             var domain = source.Domain.Split('.').ToArray();
             var id = domain[0] != "www" ? domain[0] : domain[2];
             return $"g_{id}_{new Random().Next(1, 9999)}";
+        }
+    }
+    
+    private class MediaResolver : IValueResolver<Feed, Sources, string>
+    {
+        public string Resolve(Feed source, Sources destination, string destMember, ResolutionContext context)
+        {
+            return source.Media.ToLower() switch
+            {
+                "text" => Media.Text.ToString(),
+                "video" => Media.Video.ToString(),
+                "audio" => Media.Audio.ToString(),
+                _ => Media.Text.ToString()
+            };
         }
     }
 }

@@ -3,9 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
-using Api.Activities;
 
-namespace  Threenine.Api.Activities.Websites.Websites.Commands.Put;
+namespace  Geekiam.Activities.Websites.Commands.Put;
 
 [Route(Routes.Websites)]
 public class Put : EndpointBaseAsync.WithRequest<Command>.WithActionResult<SingleResponse<Response>>

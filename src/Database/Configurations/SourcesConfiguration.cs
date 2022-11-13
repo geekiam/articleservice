@@ -36,7 +36,22 @@ public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
             .HasMaxLength(7)
             .IsRequired();
 
-        builder.HasIndex(x => new { x.Name, x.Domain})
+        builder.Property(x => x.LastUpdate)
+            .HasColumnType(ColumnTypes.Timestamp);
+
+        builder.Property(x => x.Status)
+            .HasColumnType(ColumnTypes.Varchar)
+            .HasMaxLength(15)
+            .HasDefaultValue(SourceStatus.Moderate)
+            .IsRequired();
+
+        builder.Property(x => x.Media)
+            .HasColumnType(ColumnTypes.Varchar)
+            .HasMaxLength(6)
+            .HasDefaultValue(Media.Text)
+            .IsRequired();
+
+        builder.HasIndex(x => new { x.FeedUrl, x.Domain})
             .IsUnique();
 
         builder.HasIndex(x => x.Identifier).IsUnique();

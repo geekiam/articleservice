@@ -8,7 +8,7 @@ public class Categories : BaseEntity, IValidatableObject
     public string Name { get; set; }
     public string Permalink { get; set; }
     
-    public virtual ICollection<SourceCategory> SourceCategories { get; set; }
+    public virtual ICollection<SourceCategory> Sources { get; set; }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
