@@ -28,7 +28,7 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
     public async Task<SingleResponse<Response>> Handle(Command request, CancellationToken cancellationToken)
     {
         var website = await _unitOfWork.GetRepositoryAsync<Sources>()
-            .SingleOrDefaultAsync(f => f.Identifier == request.SourceIdentifier);
+            .SingleOrDefaultAsync(f => f.Identifier == request.WebsiteIdentifier);
        
         var feeds = await _strategy.Execute(_mapper.Map<FeedLink>(website), cancellationToken);
 

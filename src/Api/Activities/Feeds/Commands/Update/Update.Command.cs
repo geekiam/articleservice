@@ -6,7 +6,7 @@ namespace Geekiam.Activities.Feeds.Commands.Update;
 
 public class Command : IRequest<SingleResponse<Response>>
 {
-   [FromBody] public string SourceIdentifier { get; set; }
+   [FromBody] public string WebsiteIdentifier { get; set; }
 }
 
 
