@@ -9,10 +9,10 @@ public class Sources : BaseEntity, IValidatableObject
     public string Identifier { get; set; }
  
     public string Name { get; set; }
+    public string Description { get; set; }
     public string Domain { get; set; }
     public string FeedUrl { get; set; }
     public string  Protocol { get; set; }
-    
     public DateTime LastUpdate { get; set; } 
     public string Status { get; set; }
 

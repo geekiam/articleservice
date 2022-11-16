@@ -50,7 +50,7 @@ public class SourcesTestData : IEnumerable<object[]>
                 .With(x => x.Name = "test")
                 .With(x => x.FeedUrl = "https://test.com")
                 .Build(),
-            3, "Domain is the same as FeedUrl"
+            3, "Domain is the same as FeedLink"
         };
         
         yield return new object[]
@@ -60,7 +60,7 @@ public class SourcesTestData : IEnumerable<object[]>
                 .With(x => x.Name = "test")
                 .With(x => x.FeedUrl = "https://test1.com")
                 .Build(),
-            2, "FeedUrl should be relative"
+            2, "FeedLink should be relative"
         };
         
     }

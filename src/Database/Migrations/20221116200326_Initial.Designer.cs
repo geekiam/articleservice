@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Geekiam.Migrations
 {
     [DbContext(typeof(ArticlesContext))]
-    [Migration("20221113225217_Initial")]
+    [Migration("20221116200326_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -177,6 +177,10 @@ namespace Geekiam.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TimestampTz")
                         .HasColumnName("created");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Domain")
                         .IsRequired()

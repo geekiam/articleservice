@@ -40,6 +40,7 @@ namespace Geekiam.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "uuid_generate_v4()"),
                     Identifier = table.Column<string>(type: "varchar", maxLength: 75, nullable: false),
                     Name = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
+                    Description = table.Column<string>(type: "varchar", maxLength: 300, nullable: true),
                     Domain = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
                     FeedUrl = table.Column<string>(type: "varchar", maxLength: 255, nullable: false),
                     Protocol = table.Column<string>(type: "varchar", maxLength: 7, nullable: false),

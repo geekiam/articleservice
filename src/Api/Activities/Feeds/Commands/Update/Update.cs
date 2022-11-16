@@ -30,7 +30,7 @@ public class Process : EndpointBaseAsync.WithRequest<Command>.WithoutResult
         var result = await _mediator.Send(request, cancellationToken);
 
         if (result.IsValid)
-            return new OkResult();
+            return new OkObjectResult(result.Item);
 
         return await HandleErrors(result.Errors);
     }

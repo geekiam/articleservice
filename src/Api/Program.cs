@@ -1,12 +1,16 @@
 using FluentValidation;
 using Geekiam;
 using Geekiam.Behaviours;
+using Geekiam.Data;
+using Geekiam.Feeds.Update;
 using Geekiam.Helpers;
 using Geekiam.Middleware;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Services;
+using Strategies;
 using Threenine;
 using Threenine.Data.DependencyInjection;
 using Threenine.Services;
@@ -48,6 +52,8 @@ builder.Services.AddDbContext<ArticlesContext>(x => x.UseNpgsql(connectionString
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient(typeof(IEntityValidationService<>),typeof(EntityValidationService<>));
 builder.Services.AddTransient(typeof(IDataService<>), typeof(DataService<>));
+builder.Services.AddTransient<IStrategy<FeedLink, List<Article>>, UpdateArticleListingStrategy>();
+builder.Services.AddTransient<IProcessService<Article, Sources>, RecentPostsService>();
 
 
 var app = builder.Build();

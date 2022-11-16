@@ -11,6 +11,7 @@ public class Mapping: Profile
        
        CreateMap<Sources, Feed>(MemberList.None)
            .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.FeedUrl))
+           .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
            .ForMember(dest => dest.Identifier, opt => opt.MapFrom(src => src.Identifier))
            ;
     }

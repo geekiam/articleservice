@@ -176,6 +176,10 @@ namespace Geekiam.Migrations
                         .HasColumnType("TimestampTz")
                         .HasColumnName("created");
 
+                    b.Property<string>("Description")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar");
+
                     b.Property<string>("Domain")
                         .IsRequired()
                         .HasMaxLength(255)

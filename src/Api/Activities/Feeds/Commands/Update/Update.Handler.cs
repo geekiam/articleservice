@@ -1,9 +1,9 @@
-using System.ServiceModel.Syndication;
-using System.Xml;
 using AutoMapper;
 using Geekiam.Data;
 using Geekiam.Feeds.Update;
 using MediatR;
+using Services;
+using Strategies;
 using Threenine.ApiResponse;
 using Threenine.Data;
 
@@ -13,58 +13,32 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly IStrategy<FeedLink, List<Article>> _strategy;
+    private readonly IProcessService<Article, Sources> _processService;
 
-    public Handler(IUnitOfWork unitOfWork, IMapper mapper)
+
+    public Handler(IUnitOfWork unitOfWork, IMapper mapper, IStrategy<FeedLink, List<Article>> strategy, IProcessService<Article, Sources> processService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _strategy = strategy;
+        _processService = processService;
     }
 
     public async Task<SingleResponse<Response>> Handle(Command request, CancellationToken cancellationToken)
     {
         var website = await _unitOfWork.GetRepositoryAsync<Sources>()
             .SingleOrDefaultAsync(f => f.Identifier == request.SourceIdentifier);
+       
+        var feeds = await _strategy.Execute(_mapper.Map<FeedLink>(website), cancellationToken);
+
+        var recentlyAdded = feeds.Where(x => x.Published >= website.LastUpdate).ToList();
+
+        if (recentlyAdded.Count > 0)
+        {
+           await _processService.Process(recentlyAdded, website);
+        }
         
-        var feeds = GetFeed(website);
-      
-        feeds.ForEach(feed =>
-        {
-            var post = _mapper.Map<Posts>(feed);
-            post.SourceId = website.Id;
-            _unitOfWork.GetRepository<Posts>()
-                .InsertNotExists(post => post.SourceId.Equals(feed.SourceId) && post.Permalink.Equals(feed.Url),
-                    post);
-           
-        });
-
-        await _unitOfWork.CommitAsync();
-
-
-        return new SingleResponse<Response>(new Response());
-    }
-
-    private List<Feed> GetFeed(Sources source)
-    {
-        var url = new Uri($"{source.Protocol}://{source.Domain}{source.FeedUrl}");
-
-        using var reader = XmlReader.Create(url.ToString() );
-        var feed = SyndicationFeed.Load(reader);
-
-        var articles = new List<Feed>();
-
-        feed.Items.ToList().ForEach(y =>
-        {
-            var article = new Feed()
-            {
-                Url = y.Links[0].Uri.ToString(),
-                Title = y.Title.Text,
-                Summary = y.Summary.Text.RemoveHtmlTags(),
-                SourceId = source.Id,
-                Published = y.PublishDate.UtcDateTime
-            };
-            articles.Add(article);
-        });
-
-        return articles;
+        return new SingleResponse<Response>(new Response { NumberOfPosts = recentlyAdded.Count });
     }
 }

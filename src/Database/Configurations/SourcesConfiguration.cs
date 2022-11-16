@@ -15,7 +15,11 @@ public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
             .HasColumnType(ColumnTypes.Varchar)
             .HasMaxLength(75)
             .IsRequired();
-        
+
+        builder.Property(x => x.Description)
+            .HasColumnType(ColumnTypes.Varchar)
+            .HasMaxLength(300);
+
         builder.Property(x => x.Name)
             .HasColumnType(ColumnTypes.Varchar)
             .HasMaxLength(255)
@@ -50,6 +54,8 @@ public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
             .HasMaxLength(6)
             .HasDefaultValue(Media.Text)
             .IsRequired();
+        
+            
 
         builder.HasIndex(x => new { x.FeedUrl, x.Domain})
             .IsUnique();
