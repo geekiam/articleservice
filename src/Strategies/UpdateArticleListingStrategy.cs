@@ -2,7 +2,7 @@
 using System.ServiceModel.Syndication;
 using System.Xml;
 using Geekiam;
-using Geekiam.Feeds.Update;
+using Geekiam.Websites.Update;
 
 namespace Strategies;
 

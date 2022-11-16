@@ -1,5 +1,6 @@
 using AutoMapper;
 using Geekiam.Data;
+using Geekiam.Websites.Get;
 using MediatR;
 using Threenine.ApiResponse;
 using Threenine.Data;
@@ -22,6 +23,6 @@ public class Handler : IRequestHandler<Query, SingleResponse<Response>>
         var result = await _unitOfWork.GetReadOnlyRepositoryAsync<Sources>()
             .SingleOrDefaultAsync(predicate: x => x.Id == request.Id);
         
-        return new SingleResponse<Response>(_mapper.Map<Response>(result));
+        return new SingleResponse<Response>(new Response{ Website = _mapper.Map<Website>(result)});
     }
 }

@@ -1,8 +1,8 @@
-using Geekiam.Feeds.Get;
+using Geekiam.Websites.Get;
 
 namespace Geekiam.Activities.Websites.Queries.GetbyId;
 
 public class Response
 {
-  public Feed Feed { get; set; }
+  public Website Website { get; set; }
 }

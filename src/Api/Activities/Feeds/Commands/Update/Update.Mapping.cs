@@ -1,7 +1,7 @@
 using System.ServiceModel.Syndication;
 using AutoMapper;
 using Geekiam.Data;
-using Geekiam.Feeds.Update;
+using Geekiam.Websites.Update;
 
 namespace Geekiam.Activities.Feeds.Commands.Update;
 

@@ -1,6 +1,5 @@
 using AutoMapper;
 using Geekiam.Data;
-using Geekiam.Feeds.Update;
 using Threenine.Data;
 
 namespace Services;

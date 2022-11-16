@@ -1,4 +1,4 @@
-namespace Geekiam.Feeds.Update;
+namespace Geekiam.Websites.Update;
 
 public class FeedLink
 {

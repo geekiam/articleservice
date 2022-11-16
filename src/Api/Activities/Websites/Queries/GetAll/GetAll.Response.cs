@@ -1,9 +1,9 @@
-using Geekiam.Feeds.Get;
+using Geekiam.Websites.Get;
 
 namespace Geekiam.Activities.Websites.Queries.GetAll;
 
 public class Response
 {
-    public List<Feed> Feed { get; set; }
+    public List<Website> Sites { get; set; }
 }
 

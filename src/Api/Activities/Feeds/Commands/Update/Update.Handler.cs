@@ -1,6 +1,6 @@
 using AutoMapper;
 using Geekiam.Data;
-using Geekiam.Feeds.Update;
+using Geekiam.Websites.Update;
 using MediatR;
 using Services;
 using Strategies;

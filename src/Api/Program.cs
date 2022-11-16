@@ -2,9 +2,9 @@ using FluentValidation;
 using Geekiam;
 using Geekiam.Behaviours;
 using Geekiam.Data;
-using Geekiam.Feeds.Update;
 using Geekiam.Helpers;
 using Geekiam.Middleware;
+using Geekiam.Websites.Update;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -34,7 +34,7 @@ builder.Host.UseSerilog((ctx, lc) => lc
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo {Title = "Api", Version = "v1"});
+    c.SwaggerDoc("v1", new OpenApiInfo {Title = "Geekiam Articles Service", Version = "v1"});
     c.CustomSchemaIds(x => x.FullName);
     c.DocumentFilter<JsonPatchDocumentFilter>();
     c.EnableAnnotations();
@@ -72,7 +72,7 @@ using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>(
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api v1"));
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Geekiam Articles Service v1"));
 }
 app.UseHttpsRedirection();
 

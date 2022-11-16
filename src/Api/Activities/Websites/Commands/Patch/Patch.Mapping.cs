@@ -1,6 +1,6 @@
 using AutoMapper;
 using Geekiam.Data;
-using Geekiam.Feeds.Patch;
+using Geekiam.Websites.Patch;
 
 namespace Geekiam.Activities.Websites.Commands.Patch;
 
@@ -12,7 +12,7 @@ public class Mapping: Profile
         
         CreateMap<Sources, Response>(MemberList.None);
  
-        CreateMap<Sources, Feed>(MemberList.None)
+        CreateMap<Sources, Website>(MemberList.None)
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
             .ForMember(dest => dest.Domain, opt => opt.MapFrom(src => src.Domain))
@@ -20,7 +20,7 @@ public class Mapping: Profile
             .ForMember(dest => dest.Protocol, opt => opt.MapFrom(src => src.Protocol));
             
 
-        CreateMap<Feed, Sources>(MemberList.None)
+        CreateMap<Website, Sources>(MemberList.None)
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
             .ForMember(dest => dest.Domain, opt => opt.MapFrom(src => src.Domain))

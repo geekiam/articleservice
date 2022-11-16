@@ -1,6 +1,6 @@
 using AutoMapper;
 using Geekiam.Data;
-using Geekiam.Feeds.Post;
+using Geekiam.Websites.Post;
 
 namespace  Geekiam.Activities.Websites.Commands.Post;
 
@@ -8,7 +8,7 @@ public class Mapping: Profile
 {
     public Mapping()
     {
-        CreateMap<Feed, Sources>(MemberList.None)
+        CreateMap<Website, Sources>(MemberList.None)
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Domain, opt => opt.MapFrom(src => src.Domain))
             .ForMember(dest => dest.FeedUrl, opt => opt.MapFrom(src => src.Url))
@@ -28,9 +28,9 @@ public class Mapping: Profile
     /// we potentially could have a number of TLD we append a totally random integer value to it
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Local
-    private class IdentifierResolver : IValueResolver<Feed, Sources, string>
+    private class IdentifierResolver : IValueResolver<Website, Sources, string>
     {
-        public string Resolve(Feed source, Sources destination, string destMember, ResolutionContext context)
+        public string Resolve(Website source, Sources destination, string destMember, ResolutionContext context)
         {
             var domain = source.Domain.Split('.').ToArray();
             var id = domain[0] != "www" ? domain[0] : domain[2];
@@ -38,9 +38,9 @@ public class Mapping: Profile
         }
     }
     
-    private class MediaResolver : IValueResolver<Feed, Sources, string>
+    private class MediaResolver : IValueResolver<Website, Sources, string>
     {
-        public string Resolve(Feed source, Sources destination, string destMember, ResolutionContext context)
+        public string Resolve(Website source, Sources destination, string destMember, ResolutionContext context)
         {
             return source.Media.ToLower() switch
             {

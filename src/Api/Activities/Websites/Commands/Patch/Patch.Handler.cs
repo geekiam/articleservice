@@ -1,5 +1,5 @@
 using Geekiam.Data;
-using Geekiam.Feeds.Patch;
+using Geekiam.Websites.Patch;
 using MediatR;
 using Threenine;
 using Threenine.ApiResponse;
@@ -17,7 +17,7 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
 
     public async Task<SingleResponse<Response>> Handle(Command request, CancellationToken cancellationToken)
     {
-        return await _services.Patch<Feed, Response>(x => x.Id == request.Id,
+        return await _services.Patch<Website, Response>(x => x.Id == request.Id,
             request.Feed);
         
     }
