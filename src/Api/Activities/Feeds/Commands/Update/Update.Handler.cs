@@ -14,10 +14,10 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IStrategy<FeedLink, List<Article>> _strategy;
-    private readonly IProcessService<Article, Sources> _processService;
+    private readonly IProcessService<Posts, Sources> _processService;
 
 
-    public Handler(IUnitOfWork unitOfWork, IMapper mapper, IStrategy<FeedLink, List<Article>> strategy, IProcessService<Article, Sources> processService)
+    public Handler(IUnitOfWork unitOfWork, IMapper mapper, IStrategy<FeedLink, List<Article>> strategy, IProcessService<Posts, Sources> processService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
@@ -36,7 +36,7 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
 
         if (recentlyAdded.Count > 0)
         {
-           await _processService.Process(recentlyAdded, website);
+           await _processService.Process(_mapper.Map<List<Posts>>(recentlyAdded), website);
         }
         
         return new SingleResponse<Response>(new Response { NumberOfPosts = recentlyAdded.Count });

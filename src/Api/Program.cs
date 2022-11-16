@@ -53,7 +53,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient(typeof(IEntityValidationService<>),typeof(EntityValidationService<>));
 builder.Services.AddTransient(typeof(IDataService<>), typeof(DataService<>));
 builder.Services.AddTransient<IStrategy<FeedLink, List<Article>>, UpdateArticleListingStrategy>();
-builder.Services.AddTransient<IProcessService<Article, Sources>, RecentPostsService>();
+builder.Services.AddTransient<IProcessService<Posts, Sources>, RecentPostsService>();
 
 
 var app = builder.Build();

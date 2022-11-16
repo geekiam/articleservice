@@ -96,3 +96,83 @@ Content-Type: application/json
 > ../../Asserts/Websites/Should_be_201_with_id.js
 
 ###
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "feed": {
+    "name": "Bitcoinist",
+    "description" : "Bitcoin news portal providing breaking news, guides, price and analysis about decentralized digital money and blockchain technology.",
+    "domain": "bitcoinist.com",
+    "url": "/feed",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../../Asserts/Websites/Should_be_201_with_id.js
+
+###
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "feed": {
+    "name": "Newsbtc",
+    "description" : "Bitcoin &#38; cryptocurrency news today, price &#38; technical analysis",
+    "domain": "newsbtc.com",
+    "url": "/feed",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../../Asserts/Websites/Should_be_201_with_id.js
+
+###
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "feed": {
+    "name": "AMB Crypto",
+    "description" : "latest news about the cryptocurrency, providing Bitcoin, Altcoin, Bitcoin Cash, Mining tool information.",
+    "domain": "ambcrypto.com",
+    "url": "/feed",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../../Asserts/Websites/Should_be_201_with_id.js
+
+###
+
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "feed": {
+    "name": "CryptoGlobe",
+    "description" : "latest news covering Bitcoin, Ethereum and other cryptoassets, check the daily market roundups and stay up to date with accurate prices and charts",
+    "domain": "cryptoglobe.com",
+    "url": "/rss/feed.xml",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../../Asserts/Websites/Should_be_201_with_id.js
+
+###

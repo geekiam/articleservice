@@ -5,22 +5,19 @@ using Threenine.Data;
 
 namespace Services;
 
-public class RecentPostsService : IProcessService<Article, Sources>
+public class RecentPostsService : IProcessService<Posts, Sources>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
 
-    public RecentPostsService(IUnitOfWork unitOfWork, IMapper mapper)
+    public RecentPostsService(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
-        _mapper = mapper;
     }
     
-    public async Task Process(List<Article> items, Sources source)
+    public async Task Process(List<Posts> items, Sources source)
     {
-        items.ForEach(article =>
+        items.ForEach(post =>
         {
-            var post = _mapper.Map<Posts>(article);
             post.SourceId = source.Id;
             _unitOfWork.GetRepository<Posts>()
                 .InsertNotExists(item => item.SourceId.Equals(post.SourceId) && item.Permalink.Equals(post.Permalink),
