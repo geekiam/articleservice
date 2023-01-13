@@ -54,8 +54,6 @@ public class SourcesConfiguration : BaseEntityTypeConfiguration<Sources>
             .HasMaxLength(6)
             .HasDefaultValue(Media.Text)
             .IsRequired();
-        
-            
 
         builder.HasIndex(x => new { x.FeedUrl, x.Domain})
             .IsUnique();

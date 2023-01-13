@@ -32,9 +32,7 @@ public class Mapping: Profile
     {
         public string Resolve(Website source, Sources destination, string destMember, ResolutionContext context)
         {
-            var domain = source.Domain.Split('.').ToArray();
-            var id = domain[0] != "www" ? domain[0] : domain[2];
-            return $"g_{id}_{new Random().Next(1, 9999)}";
+            return UniqueDomainIdentifier.Create(source.Domain);
         }
     }
     
