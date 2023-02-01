@@ -1,0 +1,178 @@
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "Gary Woodfine",
+    "description" : "Opinionated Software Developer",
+    "domain": "garywoodfine.com",
+    "url": "/feed",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "Crypto News",
+    "description": "Latest Cryptocurrency News, Bitcoin News, Ethereum News and Price Data",
+    "domain": "cryptonews.com",
+    "url": "/news/feed/",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "Bitcoin Magazine",
+    "description" : "Bitcoin News, Articles and Expert Insights",
+    "domain": "bitcoinmagazine.com",
+    "url": "/.rss/full/",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "Coin Telegraph",
+    "description": "Bitcoin, Ethereum, Crypto News & Price Indexes",
+    "domain": "cointelegraph.com",
+    "url": "/rss",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "Decrypt",
+    "description" : "Read the latest Bitcoin and Ethereum news from Decrypt. Get the latest on cryptocurrency prices, breaking news, and more about Bitcoin and blockchain.",
+    "domain": "decrypt.co",
+    "url": "/feed",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "Bitcoinist",
+    "description" : "Bitcoin news portal providing breaking news, guides, price and analysis about decentralized digital money and blockchain technology.",
+    "domain": "bitcoinist.com",
+    "url": "/feed",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "Newsbtc",
+    "description" : "Bitcoin &#38; cryptocurrency news today, price &#38; technical analysis",
+    "domain": "newsbtc.com",
+    "url": "/feed",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "AMB Crypto",
+    "description" : "latest news about the cryptocurrency, providing Bitcoin, Altcoin, Bitcoin Cash, Mining tool information.",
+    "domain": "ambcrypto.com",
+    "url": "/feed",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###
+
+
+### POST Website test
+POST {{host}}/{{websites_resource_name}}
+accept: application/json
+Content-Type: application/json
+
+{
+  "website": {
+    "name": "CryptoGlobe",
+    "description" : "latest news covering Bitcoin, Ethereum and other cryptoassets, check the daily market roundups and stay up to date with accurate prices and charts",
+    "domain": "cryptoglobe.com",
+    "url": "/rss/feed.xml",
+    "protocol" : "https",
+    "media": "text"
+  }
+}
+
+> ../Asserts/Should_be_201.js
+
+###

@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategies", "src\Strategie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "src\Services\Services.csproj", "{31362F23-F8AA-4B08-A739-B9B48B9BF16D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "seeding", "seeding", "{A3AC71FD-0D2C-4E51-AFDC-11A91A85DF0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seeding", "seeding\Seeding\Seeding.csproj", "{6948354B-9753-481A-8965-A585D6BA2336}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,10 @@ Global
 		{31362F23-F8AA-4B08-A739-B9B48B9BF16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31362F23-F8AA-4B08-A739-B9B48B9BF16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31362F23-F8AA-4B08-A739-B9B48B9BF16D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6948354B-9753-481A-8965-A585D6BA2336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6948354B-9753-481A-8965-A585D6BA2336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6948354B-9753-481A-8965-A585D6BA2336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6948354B-9753-481A-8965-A585D6BA2336}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +89,7 @@ Global
 		{7FC90520-B751-4FB8-974B-44B748E139F7} = {3334D2B1-E580-409A-BFC2-61D17322E777}
 		{CC62070B-BDE8-4C91-9787-9D4B53F509A9} = {3334D2B1-E580-409A-BFC2-61D17322E777}
 		{31362F23-F8AA-4B08-A739-B9B48B9BF16D} = {3334D2B1-E580-409A-BFC2-61D17322E777}
+		{6948354B-9753-481A-8965-A585D6BA2336} = {A3AC71FD-0D2C-4E51-AFDC-11A91A85DF0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9604DC3D-CE77-42D3-A98A-3515BA0B24DD}

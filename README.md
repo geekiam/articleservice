@@ -29,4 +29,11 @@ Once installed you can run the project using the the tests using the code below 
 ```shell
 httpyac tests/Integration/Tests/ --all --env dev
 ```
+#### Seeding the Database
+We seed the database using our predefined endpoints.
 
+Each folder may specific release updates etc
+
+```shell
+httpyac seeding/Seeding/initial/ --all --env dev
+```
