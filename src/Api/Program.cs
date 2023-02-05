@@ -7,6 +7,7 @@ using Geekiam.Middleware;
 using Geekiam.Websites.Update;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Services;
@@ -14,6 +15,7 @@ using Strategies;
 using Threenine;
 using Threenine.Data.DependencyInjection;
 using Threenine.Services;
+using WebScrapingService;
 
 const string ConnectionsStringName = "Local_DB";
 
@@ -54,6 +56,7 @@ builder.Services.AddTransient(typeof(IEntityValidationService<>),typeof(EntityVa
 builder.Services.AddTransient(typeof(IDataService<>), typeof(DataService<>));
 builder.Services.AddTransient<IStrategy<FeedLink, List<Article>>, UpdateArticleListingStrategy>();
 builder.Services.AddTransient<IProcessService<Posts, Sources>, RecentPostsService>();
+builder.Services.AddTransient<IPageContentService, PageContentService>();
 
 
 var app = builder.Build();
