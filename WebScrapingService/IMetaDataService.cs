@@ -1,6 +1,6 @@
 namespace WebScrapingService;
 
-public interface IPageContentService
+public interface IMetaDataService
 {
    Task<MetaInformation> Get(string url);
 }

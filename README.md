@@ -35,5 +35,5 @@ We seed the database using our predefined endpoints.
 Each folder may specific release updates etc
 
 ```shell
-httpyac seeding/Seeding/initial/ --all --env dev
+httpyac seeding/Seeding/initial/ --all --env seeding
 ```

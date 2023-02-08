@@ -6,7 +6,7 @@ namespace Geekiam.Activities.Feeds.Commands.Update;
 
 public class Command : IRequest<SingleResponse<Response>>
 {
-   [FromBody] public string WebsiteIdentifier { get; set; }
+   [FromRoute(Name = "identifier")] public string Identifier { get; set; }
 }
 
 

@@ -1,3 +1,4 @@
+using CloudinaryDotNet;
 using FluentValidation;
 using Geekiam;
 using Geekiam.Behaviours;
@@ -7,8 +8,8 @@ using Geekiam.Middleware;
 using Geekiam.Websites.Update;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using OpenAI_API;
 using Serilog;
 using Services;
 using Strategies;
@@ -16,9 +17,6 @@ using Threenine;
 using Threenine.Data.DependencyInjection;
 using Threenine.Services;
 using WebScrapingService;
-
-const string ConnectionsStringName = "Local_DB";
-
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -48,15 +46,35 @@ builder.Services.AddMediatR(typeof(Program))
     .AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>))
     .AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
-var connectionString = builder.Configuration.GetConnectionString(ConnectionsStringName);
+var connectionString = builder.Configuration.GetConnectionString(Constants.ConnectionsStringName);
 builder.Services.AddDbContext<ArticlesContext>(x => x.UseNpgsql(connectionString)).AddUnitOfWork<ArticlesContext>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient(typeof(IEntityValidationService<>),typeof(EntityValidationService<>));
+
 builder.Services.AddTransient(typeof(IDataService<>), typeof(DataService<>));
 builder.Services.AddTransient<IStrategy<FeedLink, List<Article>>, UpdateArticleListingStrategy>();
 builder.Services.AddTransient<IProcessService<Posts, Sources>, RecentPostsService>();
-builder.Services.AddTransient<IPageContentService, PageContentService>();
+builder.Services.AddTransient<IMetaDataService, MetaDataService>();
+builder.Services.AddTransient<IMediaService, CloudinaryMediaService>( _ =>
+{
+    var settings = new CloudinarySettings();
+     builder.Configuration.GetSection(Constants.CloudinarySettings).Bind(settings);
+    return new CloudinaryMediaService(new Account
+    {
+        Cloud = settings.Cloud,
+        ApiKey = settings.Key,
+        ApiSecret = settings.Secret
+    });
+});
+
+builder.Services.AddTransient<ISummarise, SummaryService>(_ =>
+{
+    var openApi = new OpenApi();
+    builder.Configuration.GetSection(Constants.OpenApi).Bind(openApi);
+    var auth = new APIAuthentication(openApi.Key);
+    return new SummaryService(auth);
+});
 
 
 var app = builder.Build();

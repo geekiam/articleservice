@@ -6,6 +6,6 @@ public class Validator : AbstractValidator<Command>
 {
     public Validator()
     {
-        RuleFor(x => x.WebsiteIdentifier).NotEmpty();
+        RuleFor(x => x.Identifier).NotEmpty();
     }       
 }

@@ -1,11 +1,7 @@
 
-POST {{host}}/{{feeds_resource_name}}/:update
+POST {{host}}/{{feeds_resource_name}}/:update/g_garywoodfine_9621
 accept: */*
-Content-Type: application/json-patch+json
 
-{
-  "sourceIdentifier": "g_cointelegraph_5280"
-}
 
 ###
 

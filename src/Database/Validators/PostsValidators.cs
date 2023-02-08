@@ -7,6 +7,6 @@ public class PostsValidators : AbstractValidator<Posts>
 {
     public PostsValidators()
     {
-        RuleFor(x => x.Summary).NotNull().NotEmpty();
+        RuleFor(x => x.Description).NotNull().NotEmpty();
     }
 }

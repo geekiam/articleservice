@@ -16,7 +16,7 @@ public class PostsConfiguration : BaseEntityTypeConfiguration<Posts>
          .HasMaxLength(255)
          .IsRequired();
       
-      builder.Property(x => x.Summary)
+      builder.Property(x => x.Description)
          .HasColumnType(ColumnTypes.Varchar)
          .HasMaxLength(300)
          .IsRequired();

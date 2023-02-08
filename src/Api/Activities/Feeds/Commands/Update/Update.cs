@@ -16,7 +16,7 @@ public class Process : EndpointBaseAsync.WithRequest<Command>.WithoutResult
         _mediator = mediator;
     }
     
-    [HttpPost(":update")]
+    [HttpPost(":update/{identifier}")]
     [SwaggerOperation(
         Summary = "Processes",
         Description = "Processes",
@@ -24,7 +24,7 @@ public class Process : EndpointBaseAsync.WithRequest<Command>.WithoutResult
         Tags = new[] { Routes.Feeds })
     ]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public override async Task<ActionResult> HandleAsync([FromBody] Command request, CancellationToken cancellationToken = new())
+    public override async Task<ActionResult> HandleAsync([FromRoute] Command request, CancellationToken cancellationToken = new())
     {
         var result = await _mediator.Send(request, cancellationToken);
 
