@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+
 namespace WebScrapingService;
 
 public class MetaDataService : IMetaDataService
@@ -16,7 +17,7 @@ public class MetaDataService : IMetaDataService
     {
         var meta = new MetaInformation();
         var htmlDoc = await new HtmlWeb().LoadFromWebAsync(url);
-        
+
         var metaTags = htmlDoc.DocumentNode.SelectNodes(MetaTags.TagNode);
         foreach (var tag in metaTags)
         {
@@ -25,10 +26,11 @@ public class MetaDataService : IMetaDataService
                 GetProperty(tag, meta);
             }
         }
+
         meta.Summary = await _summarise.Summary(url);
         return meta;
     }
-    
+
 
     private void GetProperty(HtmlNode tag, MetaInformation meta)
     {
@@ -38,10 +40,7 @@ public class MetaDataService : IMetaDataService
                 var imageUrl = string.IsNullOrEmpty(meta.Image)
                     ? tag.Attributes[MetaAttributes.Content].Value
                     : meta.Image;
-                meta.Image =  _mediaService.Upload(imageUrl).Result;
-                break;
-            case MetaTags.OpenGraphSiteName:
-                meta.SiteName =  string.IsNullOrEmpty(meta.SiteName) ? tag.Attributes[MetaAttributes.Content].Value : meta.SiteName;
+                meta.Image = _mediaService.Upload(imageUrl).Result;
                 break;
         }
     }

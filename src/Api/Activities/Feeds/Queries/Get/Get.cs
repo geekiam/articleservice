@@ -5,27 +5,28 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Threenine.ApiResponse;
 
-namespace Geekiam.Activities.Feeds.Commands.Update;
+namespace Geekiam.Activities.Feeds.Queries.Get;
 
 [Route(Routes.Feeds)]
-public class Process : EndpointBaseAsync.WithRequest<Command>.WithoutResult
+public class Get : EndpointBaseAsync.WithRequest<Query>.WithActionResult<SingleResponse<Response>>
 {
     private readonly IMediator _mediator;
 
-    public Process(IMediator mediator)
+    public Get(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    [HttpPost(":update/{identifier}")]
+    [HttpGet]
     [SwaggerOperation(
-        Summary = "Processes",
-        Description = "Processes",
-        OperationId = "d9025b3d-0755-4731-898e-7994dda445d7",
+        Summary = "Get",
+        Description = "Get",
+        OperationId = "5020f220-e6b0-4d5d-b767-61a995e695df",
         Tags = new[] { Routes.Feeds })
     ]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public override async Task<ActionResult> HandleAsync([FromRoute] Command request,
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Response))]
+    [ProducesErrorResponseType(typeof(BadRequestObjectResult))]
+    public override async Task<ActionResult<SingleResponse<Response>>> HandleAsync([FromQuery] Query request,
         CancellationToken cancellationToken = new())
     {
         var result = await _mediator.Send(request, cancellationToken);

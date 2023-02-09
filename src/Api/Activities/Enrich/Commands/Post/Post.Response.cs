@@ -1,4 +1,4 @@
-namespace Geekiam.Activities.Content.Commands.Post;
+namespace Geekiam.Activities.Enrich.Commands.Post;
 
 public class Response
 {

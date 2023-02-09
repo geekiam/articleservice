@@ -1,6 +1,6 @@
-namespace Geekiam.Activities;
+namespace Api.Activities;
 
 internal static partial class Routes
 {
- internal const string Feeds = "feeds";
+    internal const string Feeds = "Feeds";
 }

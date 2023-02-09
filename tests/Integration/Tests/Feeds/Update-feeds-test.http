@@ -1,7 +1,14 @@
+# curl -X 'GET' 
+#  'https://localhost:5001/Feeds?name=Gary%20Woodfine' 
+#  -H 'accept: text/plain'
+GET {{host}}/{{feeds_resource_name}}?name=Decrypt
+accept: text/plain
 
-POST {{host}}/{{feeds_resource_name}}/:update/g_cryptoglobe_2070
-accept: */*
-
+> ../../Asserts/Feeds/Should_be_200_with_result.js
 
 ###
+
+
+POST {{host}}/{{feeds_resource_name}}/:update/{{feeds_identifier}}
+accept: */*
 
