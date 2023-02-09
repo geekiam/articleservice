@@ -1,10 +1,11 @@
-### POST Website test
+# This is the initial list of subscribers to the system
+### POST Gary Woodfine Opinionated Software Developer
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "Gary Woodfine",
     "description" : "Opinionated Software Developer",
     "domain": "garywoodfine.com",
@@ -14,17 +15,17 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###
 
-### POST Website test
+### POST Crypto News
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "Crypto News",
     "description": "Latest Cryptocurrency News, Bitcoin News, Ethereum News and Price Data",
     "domain": "cryptonews.com",
@@ -34,16 +35,16 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###
-### POST Website test
+### POST Bitcoin Magazine
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "Bitcoin Magazine",
     "description" : "Bitcoin News, Articles and Expert Insights",
     "domain": "bitcoinmagazine.com",
@@ -53,17 +54,17 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###
 
-### POST Website test
+### POST Coin Telegraph
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "Coin Telegraph",
     "description": "Bitcoin, Ethereum, Crypto News & Price Indexes",
     "domain": "cointelegraph.com",
@@ -73,17 +74,17 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###
 
-### POST Website test
+### POST Decrypt
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "Decrypt",
     "description" : "Read the latest Bitcoin and Ethereum news from Decrypt. Get the latest on cryptocurrency prices, breaking news, and more about Bitcoin and blockchain.",
     "domain": "decrypt.co",
@@ -93,16 +94,16 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###
-### POST Website test
+### POST Bitcoinist
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "Bitcoinist",
     "description" : "Bitcoin news portal providing breaking news, guides, price and analysis about decentralized digital money and blockchain technology.",
     "domain": "bitcoinist.com",
@@ -112,17 +113,17 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###
 
-### POST Website test
+### POST Newsbtc
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "Newsbtc",
     "description" : "Bitcoin &#38; cryptocurrency news today, price &#38; technical analysis",
     "domain": "newsbtc.com",
@@ -132,17 +133,17 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###
 
-### POST Website test
+### POST AMB Crypto
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "AMB Crypto",
     "description" : "latest news about the cryptocurrency, providing Bitcoin, Altcoin, Bitcoin Cash, Mining tool information.",
     "domain": "ambcrypto.com",
@@ -152,18 +153,18 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###
 
 
-### POST Website test
+### POST CryptoGlobe
 POST {{host}}/{{websites_resource_name}}
 accept: application/json
 Content-Type: application/json
 
 {
-  "feed": {
+  "website": {
     "name": "CryptoGlobe",
     "description" : "latest news covering Bitcoin, Ethereum and other cryptoassets, check the daily market roundups and stay up to date with accurate prices and charts",
     "domain": "cryptoglobe.com",
@@ -173,6 +174,6 @@ Content-Type: application/json
   }
 }
 
-> ../../Asserts/Websites/Should_be_201_with_id.js
+> ../Asserts/Should_be_201.js
 
 ###

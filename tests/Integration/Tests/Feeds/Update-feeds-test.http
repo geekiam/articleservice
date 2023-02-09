@@ -1,5 +1,5 @@
 
-POST {{host}}/{{feeds_resource_name}}/:update/g_garywoodfine_9621
+POST {{host}}/{{feeds_resource_name}}/:update/g_cryptoglobe_2070
 accept: */*
 
 

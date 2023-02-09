@@ -16,7 +16,8 @@ public class Mapping: Profile
             .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Summary))
             .ForMember(dest => dest.Published, opt => opt.MapFrom(src => src.Published))
-            .ForMember(dest => dest.Permalink, opt => opt.MapFrom(src => src.Url));
+            .ForMember(dest => dest.Permalink, opt => opt.MapFrom(src => src.Url))
+            .ForMember(dest => dest.Summary, opt => opt.Ignore());
 
         CreateMap<Sources, FeedLink>(MemberList.None)
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

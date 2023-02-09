@@ -23,13 +23,10 @@ public class Handler : IRequestHandler<Command, SingleResponse<Response>>
     public async Task<SingleResponse<Response>> Handle(Command request, CancellationToken cancellationToken)
     {
         var post = await _unitOfWork.GetRepositoryAsync<Posts>().SingleOrDefaultAsync(x => x.Id.Equals(request.Id));
-        
         var metaInformation = await _service.Get(post.Permalink);
-
-        var content = _mapper.Map<Data.Content>(metaInformation);
-        content.PostId = request.Id;
-
-        _unitOfWork.GetRepository<Data.Content>().Insert(content);
+        var content = _mapper.Map(metaInformation, post);
+        
+        _unitOfWork.GetRepository<Posts>().Update(content);
          await _unitOfWork.CommitAsync();
 
 

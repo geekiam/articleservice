@@ -25,6 +25,14 @@ public class PostsConfiguration : BaseEntityTypeConfiguration<Posts>
          .HasColumnType(ColumnTypes.Varchar)
          .HasMaxLength(255)
          .IsRequired();
+      
+      builder.Property(x => x.Image)
+         .HasColumnType(ColumnTypes.Varchar)
+         .HasMaxLength(100);
+        
+      builder.Property(x => x.Summary)
+         .HasColumnType(ColumnTypes.Varchar)
+         .HasMaxLength(150);
 
       builder.HasIndex(x => new { x.Permalink, x.SourceId }).IsUnique();
       

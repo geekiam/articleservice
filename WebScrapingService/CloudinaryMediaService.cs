@@ -19,7 +19,7 @@ public class CloudinaryMediaService : IMediaService
             File = new FileDescription(url),
             UseFilename = false,
             UniqueFilename = true,
-            Overwrite = true
+            Overwrite = true,
         };
         var uploadResult = await _cloudinary.UploadAsync(uploadParams);
         return uploadResult.Url.ToString();

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Geekiam.Migrations
 {
     [DbContext(typeof(ArticlesContext))]
-    [Migration("20230208221426_Initial")]
+    [Migration("20230209185406_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,50 +65,6 @@ namespace Geekiam.Migrations
                     b.ToTable("categories", "Articles");
                 });
 
-            modelBuilder.Entity("Geekiam.Data.Content", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
-
-                    b.Property<bool?>("Active")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(true)
-                        .HasColumnName("active");
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TimestampTz")
-                        .HasColumnName("created");
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasMaxLength(75)
-                        .HasColumnType("varchar");
-
-                    b.Property<DateTime>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("TimestampTz")
-                        .HasColumnName("modified");
-
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Summary")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("content", "Articles");
-                });
-
             modelBuilder.Entity("Geekiam.Data.Posts", b =>
                 {
                     b.Property<Guid>("Id")
@@ -133,6 +89,10 @@ namespace Geekiam.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("varchar");
 
+                    b.Property<string>("Image")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar");
+
                     b.Property<DateTime>("Modified")
                         .ValueGeneratedOnUpdate()
                         .HasColumnType("TimestampTz")
@@ -148,6 +108,10 @@ namespace Geekiam.Migrations
 
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Summary")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -284,17 +248,6 @@ namespace Geekiam.Migrations
                     b.ToTable("sources", "Articles");
                 });
 
-            modelBuilder.Entity("Geekiam.Data.Content", b =>
-                {
-                    b.HasOne("Geekiam.Data.Posts", "Post")
-                        .WithMany("Contents")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
-                });
-
             modelBuilder.Entity("Geekiam.Data.Posts", b =>
                 {
                     b.HasOne("Geekiam.Data.Sources", "Source")
@@ -328,11 +281,6 @@ namespace Geekiam.Migrations
             modelBuilder.Entity("Geekiam.Data.Categories", b =>
                 {
                     b.Navigation("Sources");
-                });
-
-            modelBuilder.Entity("Geekiam.Data.Posts", b =>
-                {
-                    b.Navigation("Contents");
                 });
 
             modelBuilder.Entity("Geekiam.Data.Sources", b =>

@@ -8,11 +8,12 @@ public class Posts : BaseEntity, IValidatableObject
     public string Title { get; set; }
     public string Description { get; set; }
     public string Permalink { get; set; }
+    public string Image { get; set; }
+    public string Summary { get; set; }
     public DateTime Published { get; set; }
     
     public virtual Sources Source { get; set; }
     
-    public virtual ICollection<Content> Contents { get; set; }
     public Guid SourceId { get; set; }
 
 
