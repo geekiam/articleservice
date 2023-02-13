@@ -1,4 +1,4 @@
-namespace Geekiam.Activities.Enrich.Commands;
+namespace Api.Activities;
 
 internal static partial class Routes
 {

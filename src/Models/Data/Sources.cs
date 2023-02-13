@@ -7,21 +7,19 @@ namespace Geekiam.Data;
 public class Sources : BaseEntity, IValidatableObject
 {
     public string Identifier { get; set; }
- 
+
     public string Name { get; set; }
     public string Description { get; set; }
     public string Domain { get; set; }
     public string FeedUrl { get; set; }
-    public string  Protocol { get; set; }
-    public DateTime LastUpdate { get; set; } 
+    public string Protocol { get; set; }
+    public DateTime LastUpdate { get; set; }
     public string Status { get; set; }
 
     public string Media { get; set; }
-    
+
     public virtual ICollection<Posts> Posts { get; set; }
-    
-    
-    
+
     public virtual ICollection<SourceCategory> Categories { get; set; }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
@@ -35,16 +33,20 @@ public class Sources : BaseEntity, IValidatableObject
         {
             yield return new ValidationResult($"{nameof(Domain)} and {nameof(FeedUrl)} cannot be equal to each other");
         }
-       
+
         if (!Regex.Match(Domain, RegularExpressions.DomainName, RegexOptions.IgnoreCase).Success)
         {
             yield return new ValidationResult($"{nameof(Domain)} is not valid");
         }
-      
-        if ( !Regex.Match(FeedUrl, RegularExpressions.RelativeUrlPath, RegexOptions.IgnoreCase).Success)
+
+        if (!Regex.Match(FeedUrl, RegularExpressions.RelativeUrlPath, RegexOptions.IgnoreCase).Success)
         {
             yield return new ValidationResult($"{nameof(FeedUrl)} is required to be relative path");
         }
+    }
 
+    public override string ToString()
+    {
+        return $"{Protocol}://{Domain}{FeedUrl}";
     }
 }

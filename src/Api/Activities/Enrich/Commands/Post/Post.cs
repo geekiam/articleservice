@@ -1,3 +1,4 @@
+using Api.Activities;
 using Ardalis.ApiEndpoints;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +7,7 @@ using Threenine.ApiResponse;
 
 namespace Geekiam.Activities.Enrich.Commands.Post;
 
-[Route(Routes.Enrich)]
+[Route(Routes.Feeds)]
 public class Post : EndpointBaseAsync.WithRequest<Command>.WithActionResult<SingleResponse<Response>>
 {
     private readonly IMediator _mediator;
@@ -16,12 +17,12 @@ public class Post : EndpointBaseAsync.WithRequest<Command>.WithActionResult<Sing
         _mediator = mediator;
     }
 
-    [HttpPost("{id:guid}")]
+    [HttpPost("{id:guid}/" + Routes.Enrich)]
     [SwaggerOperation(
         Summary = "Create a new content entry from the post",
         Description = "Create a new content entry from the post",
         OperationId = "6d405a3b-a743-4e21-b537-467d123a179d",
-        Tags = new[] { Routes.Enrich })
+        Tags = new[] { Routes.Feeds })
     ]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public override async Task<ActionResult<SingleResponse<Response>>> HandleAsync([FromRoute] Command request,

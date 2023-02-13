@@ -18,6 +18,6 @@ public class FeedFormatter : IValueConverter<Sources, string>
 {
     public string Convert(Sources sourceMember, ResolutionContext context)
     {
-        return $"{sourceMember.Protocol}://{sourceMember.Domain}{sourceMember.FeedUrl}";
+        return sourceMember.ToString();
     }
 }
