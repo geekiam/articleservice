@@ -1,7 +1,7 @@
 # curl -X 'GET' 
 #  'https://localhost:5001/Feeds?name=Gary%20Woodfine' 
 #  -H 'accept: text/plain'
-GET {{host}}/{{feeds_resource_name}}?name=Decrypt
+GET {{host}}/{{feeds_resource_name}}?name=Gary%20Woodfine
 accept: text/plain
 
 > ../../Asserts/Feeds/Should_be_200_with_result.js
